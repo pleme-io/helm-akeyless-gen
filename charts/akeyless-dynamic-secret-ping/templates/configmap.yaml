@@ -8,7 +8,7 @@ metadata:
 data:
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   ping-administrative-port: {{ .Values.config.ping_administrative_port | quote }}
   ping-atm-id: {{ .Values.config.ping_atm_id | quote }}
@@ -16,17 +16,17 @@ data:
   ping-cert-subject-dn: {{ .Values.config.ping_cert_subject_dn | quote }}
   ping-client-authentication-type: {{ .Values.config.ping_client_authentication_type | quote }}
   ping-enforce-replay-prevention: {{ .Values.config.ping_enforce_replay_prevention | quote }}
-  ping-grant-types: {{ .Values.config.ping_grant_types | quote }}
+  ping-grant-types: {{ .Values.config.ping_grant_types | toJson | quote }}
   ping-issuer-dn: {{ .Values.config.ping_issuer_dn | quote }}
   ping-jwks: {{ .Values.config.ping_jwks | quote }}
   ping-jwks-url: {{ .Values.config.ping_jwks_url | quote }}
   ping-privileged-user: {{ .Values.config.ping_privileged_user | quote }}
-  ping-redirect-uris: {{ .Values.config.ping_redirect_uris | quote }}
-  ping-restricted-scopes: {{ .Values.config.ping_restricted_scopes | quote }}
+  ping-redirect-uris: {{ .Values.config.ping_redirect_uris | toJson | quote }}
+  ping-restricted-scopes: {{ .Values.config.ping_restricted_scopes | toJson | quote }}
   ping-signing-algo: {{ .Values.config.ping_signing_algo | quote }}
   ping-url: {{ .Values.config.ping_url | quote }}
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
 {{- end }}

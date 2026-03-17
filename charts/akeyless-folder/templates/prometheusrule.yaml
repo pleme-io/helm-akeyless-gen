@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-folder.fullname" . }}
+  labels:
+    {{- include "akeyless-folder.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-folder.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-folder.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-folder.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-folder.fullname" . }} is down"
+            description: "{{ include "akeyless-folder.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

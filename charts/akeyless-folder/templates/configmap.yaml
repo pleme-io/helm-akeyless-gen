@@ -10,6 +10,6 @@ data:
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
   name: {{ .Values.config.name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   type: {{ .Values.config.type | quote }}
 {{- end }}

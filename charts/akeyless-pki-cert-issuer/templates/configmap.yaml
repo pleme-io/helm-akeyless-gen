@@ -28,7 +28,7 @@ data:
   destination-path: {{ .Values.config.destination_path | quote }}
   disable-wildcards: {{ .Values.config.disable_wildcards | quote }}
   enable-acme: {{ .Values.config.enable_acme | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   gw-cluster-url: {{ .Values.config.gw_cluster_url | quote }}
   is-ca: {{ .Values.config.is_ca | quote }}
   key-usage: {{ .Values.config.key_usage | quote }}
@@ -47,6 +47,6 @@ data:
   server-flag: {{ .Values.config.server_flag | quote }}
   signer-key-name: {{ .Values.config.signer_key_name | quote }}
   street-address: {{ .Values.config.street_address | quote }}
-  tag: {{ .Values.config.tag | quote }}
+  tag: {{ .Values.config.tag | toJson | quote }}
   ttl: {{ .Values.config.ttl | quote }}
 {{- end }}

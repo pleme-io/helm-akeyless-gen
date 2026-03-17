@@ -13,7 +13,7 @@ data:
   pfx-password: {{ .Values.config.pfx_password | quote }}
   region: {{ .Values.config.region | quote }}
   secret-name: {{ .Values.config.secret_name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   usc-encryption-key: {{ .Values.config.usc_encryption_key | quote }}
   usc-name: {{ .Values.config.usc_name | quote }}
   value: {{ .Values.config.value | quote }}

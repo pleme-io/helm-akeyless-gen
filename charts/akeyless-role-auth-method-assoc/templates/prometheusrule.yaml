@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-role-auth-method-assoc.fullname" . }}
+  labels:
+    {{- include "akeyless-role-auth-method-assoc.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-role-auth-method-assoc.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-role-auth-method-assoc.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-role-auth-method-assoc.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-role-auth-method-assoc.fullname" . }} is down"
+            description: "{{ include "akeyless-role-auth-method-assoc.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

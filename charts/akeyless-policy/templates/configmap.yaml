@@ -6,10 +6,10 @@ metadata:
   labels:
     {{- include "akeyless-policy.labels" . | nindent 4 }}
 data:
-  allowed-algorithms: {{ .Values.config.allowed_algorithms | quote }}
-  allowed-key-names: {{ .Values.config.allowed_key_names | quote }}
-  allowed-key-types: {{ .Values.config.allowed_key_types | quote }}
+  allowed-algorithms: {{ .Values.config.allowed_algorithms | toJson | quote }}
+  allowed-key-names: {{ .Values.config.allowed_key_names | toJson | quote }}
+  allowed-key-types: {{ .Values.config.allowed_key_types | toJson | quote }}
   max-rotation-interval-days: {{ .Values.config.max_rotation_interval_days | quote }}
-  object-types: {{ .Values.config.object_types | quote }}
+  object-types: {{ .Values.config.object_types | toJson | quote }}
   path: {{ .Values.config.path | quote }}
 {{- end }}

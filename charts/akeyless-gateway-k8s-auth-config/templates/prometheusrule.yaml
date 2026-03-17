@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-gateway-k8s-auth-config.fullname" . }}
+  labels:
+    {{- include "akeyless-gateway-k8s-auth-config.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-gateway-k8s-auth-config.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-gateway-k8s-auth-config.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-gateway-k8s-auth-config.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-gateway-k8s-auth-config.fullname" . }} is down"
+            description: "{{ include "akeyless-gateway-k8s-auth-config.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

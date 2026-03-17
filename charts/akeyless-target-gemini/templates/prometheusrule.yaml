@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-target-gemini.fullname" . }}
+  labels:
+    {{- include "akeyless-target-gemini.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-target-gemini.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-target-gemini.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-target-gemini.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-target-gemini.fullname" . }} is down"
+            description: "{{ include "akeyless-target-gemini.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

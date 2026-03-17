@@ -21,10 +21,10 @@ data:
   name: {{ .Values.config.name | quote }}
   password-length: {{ .Values.config.password_length | quote }}
   rotate-after-disconnect: {{ .Values.config.rotate_after_disconnect | quote }}
-  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | toJson | quote }}
   rotation-hour: {{ .Values.config.rotation_hour | quote }}
   rotation-interval: {{ .Values.config.rotation_interval | quote }}
   rotator-type: {{ .Values.config.rotator_type | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
 {{- end }}

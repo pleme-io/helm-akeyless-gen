@@ -10,12 +10,12 @@ data:
   audience: {{ .Values.config.audience | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   key: {{ .Values.config.key | quote }}
   name: {{ .Values.config.name | quote }}
   permission-assignment: {{ .Values.config.permission_assignment | quote }}
   public: {{ .Values.config.public | quote }}
   redirect-uris: {{ .Values.config.redirect_uris | quote }}
   scopes: {{ .Values.config.scopes | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
 {{- end }}

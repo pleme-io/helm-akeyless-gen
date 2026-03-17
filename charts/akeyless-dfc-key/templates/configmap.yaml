@@ -19,13 +19,13 @@ data:
   customer-frg-id: {{ .Values.config.customer_frg_id | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   generate-self-signed-certificate: {{ .Values.config.generate_self_signed_certificate | quote }}
   hash-algorithm: {{ .Values.config.hash_algorithm | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
-  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | toJson | quote }}
   rotation-interval: {{ .Values.config.rotation_interval | quote }}
   split-level: {{ .Values.config.split_level | quote }}
-  tag: {{ .Values.config.tag | quote }}
+  tag: {{ .Values.config.tag | toJson | quote }}
 {{- end }}

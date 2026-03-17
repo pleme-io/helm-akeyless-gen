@@ -14,9 +14,9 @@ data:
   gitlab-url: {{ .Values.config.gitlab_url | quote }}
   group-name: {{ .Values.config.group_name | quote }}
   installation-organization: {{ .Values.config.installation_organization | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   ttl: {{ .Values.config.ttl | quote }}
 {{- end }}

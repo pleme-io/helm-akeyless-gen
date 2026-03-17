@@ -12,7 +12,7 @@ data:
   description: {{ .Values.config.description | quote }}
   fixed-user-claim-keyname: {{ .Values.config.fixed_user_claim_keyname | quote }}
   fixed-user-only: {{ .Values.config.fixed_user_only | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   password-length: {{ .Values.config.password_length | quote }}
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
@@ -22,7 +22,7 @@ data:
   rdp-user-groups: {{ .Values.config.rdp_user_groups | quote }}
   secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
   secure-access-rd-gateway-server: {{ .Values.config.secure_access_rd_gateway_server | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
   warn-user-before-expiration: {{ .Values.config.warn_user_before_expiration | quote }}

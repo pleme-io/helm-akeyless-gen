@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-dynamic-secret-eks.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-eks.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-dynamic-secret-eks.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-dynamic-secret-eks.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-dynamic-secret-eks.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-dynamic-secret-eks.fullname" . }} is down"
+            description: "{{ include "akeyless-dynamic-secret-eks.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

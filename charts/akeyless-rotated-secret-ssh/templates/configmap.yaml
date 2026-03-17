@@ -17,13 +17,13 @@ data:
   public-key-remote-path: {{ .Values.config.public_key_remote_path | quote }}
   rotate-after-disconnect: {{ .Values.config.rotate_after_disconnect | quote }}
   rotated-username: {{ .Values.config.rotated_username | quote }}
-  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | toJson | quote }}
   rotation-hour: {{ .Values.config.rotation_hour | quote }}
   rotation-interval: {{ .Values.config.rotation_interval | quote }}
   rotator-custom-cmd: {{ .Values.config.rotator_custom_cmd | quote }}
   rotator-type: {{ .Values.config.rotator_type | quote }}
   same-password: {{ .Values.config.same_password | quote }}
   secure-access-target-type: {{ .Values.config.secure_access_target_type | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
 {{- end }}

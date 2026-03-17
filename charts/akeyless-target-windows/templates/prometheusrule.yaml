@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-target-windows.fullname" . }}
+  labels:
+    {{- include "akeyless-target-windows.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-target-windows.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-target-windows.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-target-windows.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-target-windows.fullname" . }} is down"
+            description: "{{ include "akeyless-target-windows.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

@@ -25,6 +25,7 @@
         },
         "name": {
           "description": "Target name",
+          "minLength": 1,
           "type": "string"
         },
         "rabbitmq_server_uri": {
@@ -62,8 +63,25 @@
     },
     "monitoring": {
       "properties": {
+        "alerting": {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "enabled": {
           "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -83,6 +101,23 @@
         }
       },
       "type": "object"
+    },
+    "ports": {
+      "items": {
+        "properties": {
+          "containerPort": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
     "replicaCount": {
       "default": 1,
@@ -119,6 +154,39 @@
       "properties": {
         "rabbitmq_server_password": {
           "description": "RabbitMQ admin password",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "ports": {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "protocol": {
+                "type": "string"
+              },
+              "targetPort": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ],
           "type": "string"
         }
       },

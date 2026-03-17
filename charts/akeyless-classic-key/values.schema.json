@@ -13,6 +13,7 @@
       "properties": {
         "alg": {
           "description": "Classic key algorithm: AES128GCM, AES256GCM, AES128SIV, AES256SIV, RSA1024, RSA2048, RSA3072, RSA4096, EC256, EC384",
+          "minLength": 1,
           "type": "string"
         },
         "auto_rotate": {
@@ -87,6 +88,7 @@
         },
         "name": {
           "description": "ClassicKey name",
+          "minLength": 1,
           "type": "string"
         },
         "protection_key_name": {
@@ -139,8 +141,25 @@
     },
     "monitoring": {
       "properties": {
+        "alerting": {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "enabled": {
           "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -160,6 +179,23 @@
         }
       },
       "type": "object"
+    },
+    "ports": {
+      "items": {
+        "properties": {
+          "containerPort": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
     "replicaCount": {
       "default": 1,
@@ -200,6 +236,39 @@
         },
         "key_data": {
           "description": "Key material (base64 encoded)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "ports": {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "protocol": {
+                "type": "string"
+              },
+              "targetPort": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ],
           "type": "string"
         }
       },

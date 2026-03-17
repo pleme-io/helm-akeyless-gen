@@ -7,25 +7,25 @@ metadata:
     {{- include "akeyless-auth-method-cert.labels" . | nindent 4 }}
 data:
   access-expires: {{ .Values.config.access_expires | quote }}
-  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | toJson | quote }}
   allowed-cors: {{ .Values.config.allowed_cors | quote }}
-  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
-  bound-common-names: {{ .Values.config.bound_common_names | quote }}
-  bound-dns-sans: {{ .Values.config.bound_dns_sans | quote }}
-  bound-email-sans: {{ .Values.config.bound_email_sans | quote }}
-  bound-extensions: {{ .Values.config.bound_extensions | quote }}
-  bound-ips: {{ .Values.config.bound_ips | quote }}
-  bound-organizational-units: {{ .Values.config.bound_organizational_units | quote }}
-  bound-uri-sans: {{ .Values.config.bound_uri_sans | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | toJson | quote }}
+  bound-common-names: {{ .Values.config.bound_common_names | toJson | quote }}
+  bound-dns-sans: {{ .Values.config.bound_dns_sans | toJson | quote }}
+  bound-email-sans: {{ .Values.config.bound_email_sans | toJson | quote }}
+  bound-extensions: {{ .Values.config.bound_extensions | toJson | quote }}
+  bound-ips: {{ .Values.config.bound_ips | toJson | quote }}
+  bound-organizational-units: {{ .Values.config.bound_organizational_units | toJson | quote }}
+  bound-uri-sans: {{ .Values.config.bound_uri_sans | toJson | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
-  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | toJson | quote }}
   jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
   name: {{ .Values.config.name | quote }}
-  product-type: {{ .Values.config.product_type | quote }}
+  product-type: {{ .Values.config.product_type | toJson | quote }}
   require-crl-dp: {{ .Values.config.require_crl_dp | quote }}
-  revoked-cert-ids: {{ .Values.config.revoked_cert_ids | quote }}
+  revoked-cert-ids: {{ .Values.config.revoked_cert_ids | toJson | quote }}
   unique-identifier: {{ .Values.config.unique_identifier | quote }}
 {{- end }}

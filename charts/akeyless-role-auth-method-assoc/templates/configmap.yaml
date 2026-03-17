@@ -9,5 +9,5 @@ data:
   am-name: {{ .Values.config.am_name | quote }}
   case-sensitive: {{ .Values.config.case_sensitive | quote }}
   role-name: {{ .Values.config.role_name | quote }}
-  sub-claims: {{ .Values.config.sub_claims | quote }}
+  sub-claims: {{ .Values.config.sub_claims | toJson | quote }}
 {{- end }}

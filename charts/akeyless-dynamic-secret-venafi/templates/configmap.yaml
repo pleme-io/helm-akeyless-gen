@@ -8,19 +8,19 @@ metadata:
 data:
   admin-rotation-interval-days: {{ .Values.config.admin_rotation_interval_days | quote }}
   allow-subdomains: {{ .Values.config.allow_subdomains | quote }}
-  allowed-domains: {{ .Values.config.allowed_domains | quote }}
+  allowed-domains: {{ .Values.config.allowed_domains | toJson | quote }}
   auto-generated-folder: {{ .Values.config.auto_generated_folder | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
   enable-admin-rotation: {{ .Values.config.enable_admin_rotation | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
   root-first-in-chain: {{ .Values.config.root_first_in_chain | quote }}
   sign-using-akeyless-pki: {{ .Values.config.sign_using_akeyless_pki | quote }}
   signer-key-name: {{ .Values.config.signer_key_name | quote }}
   store-private-key: {{ .Values.config.store_private_key | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
   venafi-access-token: {{ .Values.config.venafi_access_token | quote }}

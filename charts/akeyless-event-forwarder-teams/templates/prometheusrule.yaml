@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-event-forwarder-teams.fullname" . }}
+  labels:
+    {{- include "akeyless-event-forwarder-teams.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-event-forwarder-teams.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-event-forwarder-teams.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-event-forwarder-teams.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-event-forwarder-teams.fullname" . }} is down"
+            description: "{{ include "akeyless-event-forwarder-teams.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

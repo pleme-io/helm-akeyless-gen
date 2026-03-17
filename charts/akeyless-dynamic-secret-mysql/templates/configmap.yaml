@@ -10,7 +10,7 @@ data:
   db-server-name: {{ .Values.config.db_server_name | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   mysql-dbname: {{ .Values.config.mysql_dbname | quote }}
   mysql-host: {{ .Values.config.mysql_host | quote }}
   mysql-port: {{ .Values.config.mysql_port | quote }}
@@ -22,7 +22,7 @@ data:
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
   secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
   ssl: {{ .Values.config.ssl | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
 {{- end }}

@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-gateway-migration.fullname" . }}
+  labels:
+    {{- include "akeyless-gateway-migration.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-gateway-migration.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-gateway-migration.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-gateway-migration.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-gateway-migration.fullname" . }} is down"
+            description: "{{ include "akeyless-gateway-migration.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

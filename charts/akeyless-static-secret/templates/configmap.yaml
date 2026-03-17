@@ -13,6 +13,6 @@ data:
   max-versions: {{ .Values.config.max_versions | quote }}
   name: {{ .Values.config.name | quote }}
   protection-key: {{ .Values.config.protection_key | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   type: {{ .Values.config.type | quote }}
 {{- end }}

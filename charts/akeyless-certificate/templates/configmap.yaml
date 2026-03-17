@@ -9,11 +9,11 @@ data:
   certificate-data: {{ .Values.config.certificate_data | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   format: {{ .Values.config.format | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   key: {{ .Values.config.key | quote }}
   key-data: {{ .Values.config.key_data | quote }}
   name: {{ .Values.config.name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
 {{- end }}

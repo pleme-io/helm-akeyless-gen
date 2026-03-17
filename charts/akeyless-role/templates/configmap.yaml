@@ -13,7 +13,7 @@ data:
   description: {{ .Values.config.description | quote }}
   event-center-access: {{ .Values.config.event_center_access | quote }}
   event-forwarders-access: {{ .Values.config.event_forwarders_access | quote }}
-  event-forwarders-name: {{ .Values.config.event_forwarders_name | quote }}
+  event-forwarders-name: {{ .Values.config.event_forwarders_name | toJson | quote }}
   gw-analytics-access: {{ .Values.config.gw_analytics_access | quote }}
   name: {{ .Values.config.name | quote }}
   reverse-rbac-access: {{ .Values.config.reverse_rbac_access | quote }}

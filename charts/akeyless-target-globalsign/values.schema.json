@@ -13,18 +13,22 @@
       "properties": {
         "contact_email": {
           "description": "Contact email",
+          "minLength": 1,
           "type": "string"
         },
         "contact_first_name": {
           "description": "Contact first name",
+          "minLength": 1,
           "type": "string"
         },
         "contact_last_name": {
           "description": "Contact last name",
+          "minLength": 1,
           "type": "string"
         },
         "contact_phone": {
           "description": "Contact phone number",
+          "minLength": 1,
           "type": "string"
         },
         "description": {
@@ -41,10 +45,12 @@
         },
         "name": {
           "description": "Target name",
+          "minLength": 1,
           "type": "string"
         },
         "profile_id": {
           "description": "GlobalSign profile ID",
+          "minLength": 1,
           "type": "string"
         },
         "timeout": {
@@ -84,8 +90,25 @@
     },
     "monitoring": {
       "properties": {
+        "alerting": {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "enabled": {
           "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -105,6 +128,23 @@
         }
       },
       "type": "object"
+    },
+    "ports": {
+      "items": {
+        "properties": {
+          "containerPort": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
     "replicaCount": {
       "default": 1,
@@ -133,6 +173,39 @@
             }
           },
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "ports": {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "protocol": {
+                "type": "string"
+              },
+              "targetPort": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ],
+          "type": "string"
         }
       },
       "type": "object"

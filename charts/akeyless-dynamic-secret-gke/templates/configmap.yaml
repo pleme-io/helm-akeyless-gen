@@ -11,13 +11,13 @@ data:
   gke-cluster-endpoint: {{ .Values.config.gke_cluster_endpoint | quote }}
   gke-cluster-name: {{ .Values.config.gke_cluster_name | quote }}
   gke-service-account-email: {{ .Values.config.gke_service_account_email | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
   secure-access-allow-port-forwading: {{ .Values.config.secure_access_allow_port_forwading | quote }}
   secure-access-cluster-endpoint: {{ .Values.config.secure_access_cluster_endpoint | quote }}
   secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
 {{- end }}

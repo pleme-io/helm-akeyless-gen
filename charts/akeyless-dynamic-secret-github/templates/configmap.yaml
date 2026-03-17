@@ -13,11 +13,11 @@ data:
   installation-id: {{ .Values.config.installation_id | quote }}
   installation-organization: {{ .Values.config.installation_organization | quote }}
   installation-repository: {{ .Values.config.installation_repository | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
-  token-permissions: {{ .Values.config.token_permissions | quote }}
-  token-repositories: {{ .Values.config.token_repositories | quote }}
+  token-permissions: {{ .Values.config.token_permissions | toJson | quote }}
+  token-repositories: {{ .Values.config.token_repositories | toJson | quote }}
   token-ttl: {{ .Values.config.token_ttl | quote }}
 {{- end }}

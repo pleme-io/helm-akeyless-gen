@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-auth-method-azure-ad.fullname" . }}
+  labels:
+    {{- include "akeyless-auth-method-azure-ad.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-auth-method-azure-ad.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-auth-method-azure-ad.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-auth-method-azure-ad.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-auth-method-azure-ad.fullname" . }} is down"
+            description: "{{ include "akeyless-auth-method-azure-ad.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

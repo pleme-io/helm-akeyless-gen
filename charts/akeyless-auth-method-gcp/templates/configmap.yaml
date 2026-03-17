@@ -7,23 +7,23 @@ metadata:
     {{- include "akeyless-auth-method-gcp.labels" . | nindent 4 }}
 data:
   access-expires: {{ .Values.config.access_expires | quote }}
-  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | toJson | quote }}
   audience: {{ .Values.config.audience | quote }}
-  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
-  bound-ips: {{ .Values.config.bound_ips | quote }}
-  bound-labels: {{ .Values.config.bound_labels | quote }}
-  bound-projects: {{ .Values.config.bound_projects | quote }}
-  bound-regions: {{ .Values.config.bound_regions | quote }}
-  bound-service-accounts: {{ .Values.config.bound_service_accounts | quote }}
-  bound-zones: {{ .Values.config.bound_zones | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | toJson | quote }}
+  bound-ips: {{ .Values.config.bound_ips | toJson | quote }}
+  bound-labels: {{ .Values.config.bound_labels | toJson | quote }}
+  bound-projects: {{ .Values.config.bound_projects | toJson | quote }}
+  bound-regions: {{ .Values.config.bound_regions | toJson | quote }}
+  bound-service-accounts: {{ .Values.config.bound_service_accounts | toJson | quote }}
+  bound-zones: {{ .Values.config.bound_zones | toJson | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
-  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | toJson | quote }}
   jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
   name: {{ .Values.config.name | quote }}
-  product-type: {{ .Values.config.product_type | quote }}
+  product-type: {{ .Values.config.product_type | toJson | quote }}
   type: {{ .Values.config.type | quote }}
   unique-identifier: {{ .Values.config.unique_identifier | quote }}
 {{- end }}

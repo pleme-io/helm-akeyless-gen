@@ -7,22 +7,22 @@ metadata:
     {{- include "akeyless-auth-method-huawei.labels" . | nindent 4 }}
 data:
   access-expires: {{ .Values.config.access_expires | quote }}
-  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
-  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | toJson | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | toJson | quote }}
   auth-url: {{ .Values.config.auth_url | quote }}
-  bound-domain-id: {{ .Values.config.bound_domain_id | quote }}
-  bound-domain-name: {{ .Values.config.bound_domain_name | quote }}
-  bound-ips: {{ .Values.config.bound_ips | quote }}
-  bound-tenant-id: {{ .Values.config.bound_tenant_id | quote }}
-  bound-tenant-name: {{ .Values.config.bound_tenant_name | quote }}
-  bound-user-id: {{ .Values.config.bound_user_id | quote }}
-  bound-user-name: {{ .Values.config.bound_user_name | quote }}
+  bound-domain-id: {{ .Values.config.bound_domain_id | toJson | quote }}
+  bound-domain-name: {{ .Values.config.bound_domain_name | toJson | quote }}
+  bound-ips: {{ .Values.config.bound_ips | toJson | quote }}
+  bound-tenant-id: {{ .Values.config.bound_tenant_id | toJson | quote }}
+  bound-tenant-name: {{ .Values.config.bound_tenant_name | toJson | quote }}
+  bound-user-id: {{ .Values.config.bound_user_id | toJson | quote }}
+  bound-user-name: {{ .Values.config.bound_user_name | toJson | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
-  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | toJson | quote }}
   jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
   name: {{ .Values.config.name | quote }}
-  product-type: {{ .Values.config.product_type | quote }}
+  product-type: {{ .Values.config.product_type | toJson | quote }}
 {{- end }}

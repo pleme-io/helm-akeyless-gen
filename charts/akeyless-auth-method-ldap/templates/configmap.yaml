@@ -7,18 +7,18 @@ metadata:
     {{- include "akeyless-auth-method-ldap.labels" . | nindent 4 }}
 data:
   access-expires: {{ .Values.config.access_expires | quote }}
-  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
-  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
-  bound-ips: {{ .Values.config.bound_ips | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | toJson | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | toJson | quote }}
+  bound-ips: {{ .Values.config.bound_ips | toJson | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
   gen-key: {{ .Values.config.gen_key | quote }}
-  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | toJson | quote }}
   jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
   name: {{ .Values.config.name | quote }}
-  product-type: {{ .Values.config.product_type | quote }}
+  product-type: {{ .Values.config.product_type | toJson | quote }}
   public-key-data: {{ .Values.config.public_key_data | quote }}
   unique-identifier: {{ .Values.config.unique_identifier | quote }}
 {{- end }}

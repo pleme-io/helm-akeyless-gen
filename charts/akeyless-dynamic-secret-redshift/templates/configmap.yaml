@@ -10,7 +10,7 @@ data:
   custom-username-template: {{ .Values.config.custom_username_template | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   password-length: {{ .Values.config.password_length | quote }}
   producer-encryption-key: {{ .Values.config.producer_encryption_key | quote }}
@@ -19,7 +19,7 @@ data:
   redshift-port: {{ .Values.config.redshift_port | quote }}
   redshift-username: {{ .Values.config.redshift_username | quote }}
   ssl: {{ .Values.config.ssl | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
 {{- end }}

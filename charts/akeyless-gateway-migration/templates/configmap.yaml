@@ -8,12 +8,12 @@ metadata:
 data:
   ServiceAccountKeyDecoded: {{ .Values.config.ServiceAccountKeyDecoded | quote }}
   ad-auto-rotate: {{ .Values.config.ad_auto_rotate | quote }}
-  ad-cert-expiration-event-in: {{ .Values.config.ad_cert_expiration_event_in | quote }}
+  ad-cert-expiration-event-in: {{ .Values.config.ad_cert_expiration_event_in | toJson | quote }}
   ad-certificates-path-template: {{ .Values.config.ad_certificates_path_template | quote }}
   ad-computer-base-dn: {{ .Values.config.ad_computer_base_dn | quote }}
   ad-discover-iis-app: {{ .Values.config.ad_discover_iis_app | quote }}
   ad-discover-services: {{ .Values.config.ad_discover_services | quote }}
-  ad-discovery-types: {{ .Values.config.ad_discovery_types | quote }}
+  ad-discovery-types: {{ .Values.config.ad_discovery_types | toJson | quote }}
   ad-domain-name: {{ .Values.config.ad_domain_name | quote }}
   ad-domain-users-path-template: {{ .Values.config.ad_domain_users_path_template | quote }}
   ad-local-users-ignore: {{ .Values.config.ad_local_users_ignore | quote }}
@@ -44,17 +44,17 @@ data:
   conjur-api-key: {{ .Values.config.conjur_api_key | quote }}
   conjur-url: {{ .Values.config.conjur_url | quote }}
   conjur-username: {{ .Values.config.conjur_username | quote }}
-  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | toJson | quote }}
   gcp-key: {{ .Values.config.gcp_key | quote }}
   gcp-project-id: {{ .Values.config.gcp_project_id | quote }}
   hashi-json: {{ .Values.config.hashi_json | quote }}
-  hashi-ns: {{ .Values.config.hashi_ns | quote }}
+  hashi-ns: {{ .Values.config.hashi_ns | toJson | quote }}
   hashi-token: {{ .Values.config.hashi_token | quote }}
   hashi-url: {{ .Values.config.hashi_url | quote }}
   hosts: {{ .Values.config.hosts | quote }}
-  k8s-ca-certificate: {{ .Values.config.k8s_ca_certificate | quote }}
-  k8s-client-certificate: {{ .Values.config.k8s_client_certificate | quote }}
-  k8s-client-key: {{ .Values.config.k8s_client_key | quote }}
+  k8s-ca-certificate: {{ .Values.config.k8s_ca_certificate | toJson | quote }}
+  k8s-client-certificate: {{ .Values.config.k8s_client_certificate | toJson | quote }}
+  k8s-client-key: {{ .Values.config.k8s_client_key | toJson | quote }}
   k8s-namespace: {{ .Values.config.k8s_namespace | quote }}
   k8s-password: {{ .Values.config.k8s_password | quote }}
   k8s-skip-system: {{ .Values.config.k8s_skip_system | quote }}

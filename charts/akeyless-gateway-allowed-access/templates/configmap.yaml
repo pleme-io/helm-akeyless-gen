@@ -12,5 +12,5 @@ data:
   description: {{ .Values.config.description | quote }}
   name: {{ .Values.config.name | quote }}
   permissions: {{ .Values.config.permissions | quote }}
-  sub-claims: {{ .Values.config.sub_claims | quote }}
+  sub-claims: {{ .Values.config.sub_claims | toJson | quote }}
 {{- end }}

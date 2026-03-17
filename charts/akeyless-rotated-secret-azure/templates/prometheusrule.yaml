@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-rotated-secret-azure.fullname" . }}
+  labels:
+    {{- include "akeyless-rotated-secret-azure.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-rotated-secret-azure.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-rotated-secret-azure.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-rotated-secret-azure.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-rotated-secret-azure.fullname" . }} is down"
+            description: "{{ include "akeyless-rotated-secret-azure.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

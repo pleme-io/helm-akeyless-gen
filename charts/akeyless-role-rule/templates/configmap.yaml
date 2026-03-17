@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "akeyless-role-rule.labels" . | nindent 4 }}
 data:
-  capability: {{ .Values.config.capability | quote }}
+  capability: {{ .Values.config.capability | toJson | quote }}
   path: {{ .Values.config.path | quote }}
   role-name: {{ .Values.config.role_name | quote }}
   rule-type: {{ .Values.config.rule_type | quote }}

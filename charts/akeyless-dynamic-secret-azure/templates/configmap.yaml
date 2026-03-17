@@ -15,11 +15,11 @@ data:
   description: {{ .Values.config.description | quote }}
   fixed-user-claim-keyname: {{ .Values.config.fixed_user_claim_keyname | quote }}
   fixed-user-only: {{ .Values.config.fixed_user_only | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   password-length: {{ .Values.config.password_length | quote }}
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-group-obj-id: {{ .Values.config.user_group_obj_id | quote }}
   user-portal-access: {{ .Values.config.user_portal_access | quote }}

@@ -213,6 +213,7 @@
         },
         "hosts": {
           "description": "A comma separated list of IPs, CIDR ranges, or DNS names to scan",
+          "minLength": 1,
           "type": "string"
         },
         "k8s_ca_certificate": {
@@ -262,6 +263,7 @@
         },
         "name": {
           "description": "Migration name",
+          "minLength": 1,
           "type": "string"
         },
         "port_ranges": {
@@ -292,6 +294,7 @@
         },
         "si_target_name": {
           "description": "SSH, Windows or Linked Target Name. (Relevant only for Server Inventory migration)",
+          "minLength": 1,
           "type": "string"
         },
         "si_user_groups": {
@@ -304,10 +307,12 @@
         },
         "si_users_path_template": {
           "description": "Path location template for migrating users as Rotated Secrets e.g.: .../Users/{{COMPUTER_NAME}}/{{USERNAME}} (Relevant only for Server Inventory migration)",
+          "minLength": 1,
           "type": "string"
         },
         "target_location": {
           "description": "Target location in Akeyless for imported secrets",
+          "minLength": 1,
           "type": "string"
         },
         "type": {
@@ -349,8 +354,25 @@
     },
     "monitoring": {
       "properties": {
+        "alerting": {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "enabled": {
           "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -370,6 +392,23 @@
         }
       },
       "type": "object"
+    },
+    "ports": {
+      "items": {
+        "properties": {
+          "containerPort": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
     "replicaCount": {
       "default": 1,
@@ -398,6 +437,39 @@
             }
           },
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "ports": {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "protocol": {
+                "type": "string"
+              },
+              "targetPort": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ],
+          "type": "string"
         }
       },
       "type": "object"

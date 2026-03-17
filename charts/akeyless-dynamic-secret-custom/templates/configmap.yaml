@@ -11,13 +11,13 @@ data:
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
   enable-admin-rotation: {{ .Values.config.enable_admin_rotation | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   name: {{ .Values.config.name | quote }}
   payload: {{ .Values.config.payload | quote }}
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
   revoke-sync-url: {{ .Values.config.revoke_sync_url | quote }}
   rotate-sync-url: {{ .Values.config.rotate_sync_url | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   timeout-sec: {{ .Values.config.timeout_sec | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}
 {{- end }}

@@ -6,15 +6,15 @@ metadata:
   labels:
     {{- include "akeyless-event-forwarder-teams.labels" . | nindent 4 }}
 data:
-  auth-methods-event-source-locations: {{ .Values.config.auth_methods_event_source_locations | quote }}
+  auth-methods-event-source-locations: {{ .Values.config.auth_methods_event_source_locations | toJson | quote }}
   description: {{ .Values.config.description | quote }}
-  event-types: {{ .Values.config.event_types | quote }}
+  event-types: {{ .Values.config.event_types | toJson | quote }}
   every: {{ .Values.config.every | quote }}
-  gateways-event-source-locations: {{ .Values.config.gateways_event_source_locations | quote }}
-  items-event-source-locations: {{ .Values.config.items_event_source_locations | quote }}
+  gateways-event-source-locations: {{ .Values.config.gateways_event_source_locations | toJson | quote }}
+  items-event-source-locations: {{ .Values.config.items_event_source_locations | toJson | quote }}
   key: {{ .Values.config.key | quote }}
   name: {{ .Values.config.name | quote }}
   runner-type: {{ .Values.config.runner_type | quote }}
-  targets-event-source-locations: {{ .Values.config.targets_event_source_locations | quote }}
+  targets-event-source-locations: {{ .Values.config.targets_event_source_locations | toJson | quote }}
   url: {{ .Values.config.url | quote }}
 {{- end }}

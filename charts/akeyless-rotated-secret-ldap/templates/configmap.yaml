@@ -18,12 +18,12 @@ data:
   password-length: {{ .Values.config.password_length | quote }}
   rotate-after-disconnect: {{ .Values.config.rotate_after_disconnect | quote }}
   rotated-username: {{ .Values.config.rotated_username | quote }}
-  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | toJson | quote }}
   rotation-hour: {{ .Values.config.rotation_hour | quote }}
   rotation-interval: {{ .Values.config.rotation_interval | quote }}
   rotator-type: {{ .Values.config.rotator_type | quote }}
-  tags: {{ .Values.config.tags | quote }}
-  target: {{ .Values.config.target | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
+  target: {{ .Values.config.target | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   user-attribute: {{ .Values.config.user_attribute | quote }}
   user-dn: {{ .Values.config.user_dn | quote }}

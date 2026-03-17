@@ -106,6 +106,7 @@
         },
         "name": {
           "description": "Auth Method name",
+          "minLength": 1,
           "type": "string"
         },
         "product_type": {
@@ -159,8 +160,25 @@
     },
     "monitoring": {
       "properties": {
+        "alerting": {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "enabled": {
           "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -180,6 +198,23 @@
         }
       },
       "type": "object"
+    },
+    "ports": {
+      "items": {
+        "properties": {
+          "containerPort": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
     "replicaCount": {
       "default": 1,
@@ -216,6 +251,39 @@
       "properties": {
         "keytab_file_data": {
           "description": "Kerberos keytab file data (base64)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "ports": {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "protocol": {
+                "type": "string"
+              },
+              "targetPort": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ],
           "type": "string"
         }
       },

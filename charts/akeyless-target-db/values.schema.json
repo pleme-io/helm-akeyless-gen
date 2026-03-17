@@ -38,6 +38,7 @@
         "connection_type": {
           "default": "credentials",
           "description": "Type of connection to mssql database [credentials/cloud-identity/wallet/parent-target]",
+          "minLength": 1,
           "type": "string"
         },
         "db_name": {
@@ -50,6 +51,7 @@
         },
         "db_type": {
           "description": "Database type: mysql, mssql, postgresql, mongodb, snowflake, oracle, cassandra, redshift, hanadb",
+          "minLength": 1,
           "type": "string"
         },
         "description": {
@@ -90,6 +92,7 @@
         },
         "name": {
           "description": "Target name",
+          "minLength": 1,
           "type": "string"
         },
         "oracle_service_name": {
@@ -166,8 +169,25 @@
     },
     "monitoring": {
       "properties": {
+        "alerting": {
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
+        },
         "enabled": {
           "type": "boolean"
+        },
+        "interval": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
         }
       },
       "type": "object"
@@ -187,6 +207,23 @@
         }
       },
       "type": "object"
+    },
+    "ports": {
+      "items": {
+        "properties": {
+          "containerPort": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "protocol": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
     "replicaCount": {
       "default": 1,
@@ -235,6 +272,39 @@
         },
         "ssl_certificate": {
           "description": "Client SSL certificate (PEM)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "service": {
+      "properties": {
+        "ports": {
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "protocol": {
+                "type": "string"
+              },
+              "targetPort": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "type": {
+          "enum": [
+            "ClusterIP",
+            "NodePort",
+            "LoadBalancer"
+          ],
           "type": "string"
         }
       },

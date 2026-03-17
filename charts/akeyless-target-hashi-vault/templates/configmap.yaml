@@ -11,5 +11,5 @@ data:
   key: {{ .Values.config.key | quote }}
   max-versions: {{ .Values.config.max_versions | quote }}
   name: {{ .Values.config.name | quote }}
-  namespace: {{ .Values.config.namespace | quote }}
+  namespace: {{ .Values.config.namespace | toJson | quote }}
 {{- end }}

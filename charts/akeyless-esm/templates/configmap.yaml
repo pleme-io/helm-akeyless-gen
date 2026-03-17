@@ -10,6 +10,6 @@ data:
   description: {{ .Values.config.description | quote }}
   esm-name: {{ .Values.config.esm_name | quote }}
   secret-name: {{ .Values.config.secret_name | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   value: {{ .Values.config.value | quote }}
 {{- end }}

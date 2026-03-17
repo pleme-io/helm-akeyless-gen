@@ -15,7 +15,7 @@ data:
   fixed-user-claim-keyname: {{ .Values.config.fixed_user_claim_keyname | quote }}
   group-dn: {{ .Values.config.group_dn | quote }}
   host-provider: {{ .Values.config.host_provider | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   ldap-ca-cert: {{ .Values.config.ldap_ca_cert | quote }}
   ldap-url: {{ .Values.config.ldap_url | quote }}
   name: {{ .Values.config.name | quote }}
@@ -23,8 +23,8 @@ data:
   producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
   secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
   secure-access-rd-gateway-server: {{ .Values.config.secure_access_rd_gateway_server | quote }}
-  tags: {{ .Values.config.tags | quote }}
-  target: {{ .Values.config.target | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
+  target: {{ .Values.config.target | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   token-expiration: {{ .Values.config.token_expiration | quote }}
   user-attribute: {{ .Values.config.user_attribute | quote }}

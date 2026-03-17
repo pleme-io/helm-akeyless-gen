@@ -9,7 +9,7 @@ data:
   custom-username-template: {{ .Values.config.custom_username_template | quote }}
   delete-protection: {{ .Values.config.delete_protection | quote }}
   description: {{ .Values.config.description | quote }}
-  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | toJson | quote }}
   k8s-allowed-namespaces: {{ .Values.config.k8s_allowed_namespaces | quote }}
   k8s-cluster-endpoint: {{ .Values.config.k8s_cluster_endpoint | quote }}
   k8s-cluster-name: {{ .Values.config.k8s_cluster_name | quote }}
@@ -26,7 +26,7 @@ data:
   secure-access-cluster-endpoint: {{ .Values.config.secure_access_cluster_endpoint | quote }}
   secure-access-dashboard-url: {{ .Values.config.secure_access_dashboard_url | quote }}
   secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
-  tags: {{ .Values.config.tags | quote }}
+  tags: {{ .Values.config.tags | toJson | quote }}
   target-name: {{ .Values.config.target_name | quote }}
   use-gw-service-account: {{ .Values.config.use_gw_service_account | quote }}
   user-ttl: {{ .Values.config.user_ttl | quote }}

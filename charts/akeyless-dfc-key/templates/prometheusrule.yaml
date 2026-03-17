@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-dfc-key.fullname" . }}
+  labels:
+    {{- include "akeyless-dfc-key.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-dfc-key.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-dfc-key.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-dfc-key.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-dfc-key.fullname" . }} is down"
+            description: "{{ include "akeyless-dfc-key.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

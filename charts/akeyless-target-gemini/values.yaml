@@ -1,8 +1,19 @@
 image:
-  repository: ''
+  repository: ghcr.io/pleme-io/placeholder
   tag: latest
   pullPolicy: Always
 replicaCount: 1
+ports:
+- name: http
+  containerPort: 8080
+  protocol: TCP
+service:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+    protocol: TCP
 config:
   api_key: ''
   description: ''
@@ -19,6 +30,11 @@ resources:
     memory: 256Mi
 monitoring:
   enabled: true
+  alerting:
+    enabled: false
+  interval: 30s
+  port: metrics
+  path: /metrics
 networkPolicy:
   enabled: true
 pdb:

@@ -1,0 +1,21 @@
+{{- if .Values.monitoring.alerting.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ include "akeyless-kmip-environment.fullname" . }}
+  labels:
+    {{- include "akeyless-kmip-environment.labels" . | nindent 4 }}
+spec:
+  groups:
+    - name: {{ include "akeyless-kmip-environment.fullname" . }}.availability
+      interval: 30s
+      rules:
+        - alert: {{ include "akeyless-kmip-environment.fullname" . | title | replace "-" "" }}Down
+          expr: up{{job="{{ include "akeyless-kmip-environment.fullname" . }}"}} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "{{ include "akeyless-kmip-environment.fullname" . }} is down"
+            description: "{{ include "akeyless-kmip-environment.fullname" . }} has been down for more than 2 minutes."
+{{- end }}

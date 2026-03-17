@@ -1,0 +1,24 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-eks.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-eks.labels" . | nindent 4 }}
+data:
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  eks-assume-role: {{ .Values.config.eks_assume_role | quote }}
+  eks-cluster-endpoint: {{ .Values.config.eks_cluster_endpoint | quote }}
+  eks-cluster-name: {{ .Values.config.eks_cluster_name | quote }}
+  eks-region: {{ .Values.config.eks_region | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
+  secure-access-allow-port-forwading: {{ .Values.config.secure_access_allow_port_forwading | quote }}
+  secure-access-cluster-endpoint: {{ .Values.config.secure_access_cluster_endpoint | quote }}
+  secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

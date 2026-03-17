@@ -1,0 +1,31 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  description: ''
+  key: ''
+  max_versions: ''
+  mtls_cert_data_base64: ''
+  mtls_key_data_base64: ''
+  name: ''
+  timeout: ''
+secrets:
+  api_key: ''
+  api_secret: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "acme_challenge": {
+          "default": "http",
+          "type": "string"
+        },
+        "description": {
+          "description": "Target description",
+          "type": "string"
+        },
+        "dns_target_creds": {
+          "description": "Name of existing cloud target for DNS credentials. Required when acme-challenge=dns. Supported: AWS, Azure, GCP targets",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address for ACME account registration",
+          "type": "string"
+        },
+        "gcp_project": {
+          "description": "GCP Cloud DNS: Project ID. Optional - can be derived from service account",
+          "type": "string"
+        },
+        "hosted_zone": {
+          "description": "AWS Route53 hosted zone ID. Required when dns-target-creds points to AWS target",
+          "type": "string"
+        },
+        "key": {
+          "description": "The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)",
+          "type": "string"
+        },
+        "lets_encrypt_url": {
+          "default": "production",
+          "type": "string"
+        },
+        "max_versions": {
+          "description": "Set the maximum number of versions, limited by the account settings defaults.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Target name",
+          "type": "string"
+        },
+        "resource_group": {
+          "description": "Azure resource group name. Required when dns-target-creds points to Azure target",
+          "type": "string"
+        },
+        "timeout": {
+          "default": "5m",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_target_lets_encrypt values",
+  "type": "object"
+}

@@ -1,0 +1,38 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  access_mode: ''
+  admin_email: ''
+  delete_protection: false
+  description: ''
+  fixed_user_claim_keyname: ''
+  gcp_key: ''
+  group_email: ''
+  group_role: ''
+  item_custom_fields: {}
+  name: ''
+  producer_encryption_key_name: ''
+  role_name: ''
+  role_scope: ''
+  secure_access_delay: 0
+  tags: []
+  target_name: ''
+  user_ttl: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

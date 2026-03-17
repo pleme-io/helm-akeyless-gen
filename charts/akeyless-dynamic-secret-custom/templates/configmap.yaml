@@ -1,0 +1,23 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-custom.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-custom.labels" . | nindent 4 }}
+data:
+  admin-rotation-interval-days: {{ .Values.config.admin_rotation_interval_days | quote }}
+  create-sync-url: {{ .Values.config.create_sync_url | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  enable-admin-rotation: {{ .Values.config.enable_admin_rotation | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  payload: {{ .Values.config.payload | quote }}
+  producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
+  revoke-sync-url: {{ .Values.config.revoke_sync_url | quote }}
+  rotate-sync-url: {{ .Values.config.rotate_sync_url | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  timeout-sec: {{ .Values.config.timeout_sec | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

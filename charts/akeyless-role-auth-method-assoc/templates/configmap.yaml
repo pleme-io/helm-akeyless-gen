@@ -1,0 +1,13 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-role-auth-method-assoc.fullname" . }}
+  labels:
+    {{- include "akeyless-role-auth-method-assoc.labels" . | nindent 4 }}
+data:
+  am-name: {{ .Values.config.am_name | quote }}
+  case-sensitive: {{ .Values.config.case_sensitive | quote }}
+  role-name: {{ .Values.config.role_name | quote }}
+  sub-claims: {{ .Values.config.sub_claims | quote }}
+{{- end }}

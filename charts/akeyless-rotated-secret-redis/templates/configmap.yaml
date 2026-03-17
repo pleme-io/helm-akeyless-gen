@@ -1,0 +1,24 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-rotated-secret-redis.fullname" . }}
+  labels:
+    {{- include "akeyless-rotated-secret-redis.labels" . | nindent 4 }}
+data:
+  authentication-credentials: {{ .Values.config.authentication_credentials | quote }}
+  auto-rotate: {{ .Values.config.auto_rotate | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  rotated-username: {{ .Values.config.rotated_username | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-hour: {{ .Values.config.rotation_hour | quote }}
+  rotation-interval: {{ .Values.config.rotation_interval | quote }}
+  rotator-type: {{ .Values.config.rotator_type | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+{{- end }}

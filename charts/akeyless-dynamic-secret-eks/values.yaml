@@ -1,0 +1,40 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  delete_protection: false
+  description: ''
+  eks_assume_role: ''
+  eks_cluster_endpoint: ''
+  eks_cluster_name: ''
+  eks_region: ''
+  item_custom_fields: {}
+  name: ''
+  producer_encryption_key_name: ''
+  secure_access_allow_port_forwading: false
+  secure_access_cluster_endpoint: ''
+  secure_access_delay: 0
+  tags: []
+  target_name: ''
+  user_ttl: ''
+secrets:
+  eks_access_key_id: ''
+  eks_cluster_ca_cert: ''
+  eks_secret_access_key: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

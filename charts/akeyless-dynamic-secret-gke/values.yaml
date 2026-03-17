@@ -1,0 +1,38 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  delete_protection: false
+  description: ''
+  gke_cluster_endpoint: ''
+  gke_cluster_name: ''
+  gke_service_account_email: ''
+  item_custom_fields: {}
+  name: ''
+  producer_encryption_key_name: ''
+  secure_access_allow_port_forwading: false
+  secure_access_cluster_endpoint: ''
+  secure_access_delay: 0
+  tags: []
+  target_name: ''
+  user_ttl: ''
+secrets:
+  gke_account_key: ''
+  gke_cluster_cert: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

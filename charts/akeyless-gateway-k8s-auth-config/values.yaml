@@ -1,0 +1,37 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  access_id: ''
+  cluster_api_type: ''
+  disable_issuer_validation: ''
+  k8s_auth_type: ''
+  k8s_ca_cert: ''
+  k8s_client_certificate: ''
+  k8s_client_key: ''
+  k8s_host: ''
+  k8s_issuer: ''
+  name: ''
+  rancher_api_key: ''
+  rancher_cluster_id: ''
+  signing_key: ''
+  token_exp: 0
+  token_reviewer_jwt: ''
+  use_gw_service_account: false
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

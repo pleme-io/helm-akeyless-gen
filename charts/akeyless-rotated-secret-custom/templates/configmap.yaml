@@ -1,0 +1,29 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-rotated-secret-custom.fullname" . }}
+  labels:
+    {{- include "akeyless-rotated-secret-custom.labels" . | nindent 4 }}
+data:
+  authentication-credentials: {{ .Values.config.authentication_credentials | quote }}
+  auto-rotate: {{ .Values.config.auto_rotate | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  enable-password-policy: {{ .Values.config.enable_password_policy | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  rotate-after-disconnect: {{ .Values.config.rotate_after_disconnect | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-hour: {{ .Values.config.rotation_hour | quote }}
+  rotation-interval: {{ .Values.config.rotation_interval | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  timeout-sec: {{ .Values.config.timeout_sec | quote }}
+  use-capital-letters: {{ .Values.config.use_capital_letters | quote }}
+  use-lower-letters: {{ .Values.config.use_lower_letters | quote }}
+  use-numbers: {{ .Values.config.use_numbers | quote }}
+  use-special-characters: {{ .Values.config.use_special_characters | quote }}
+{{- end }}

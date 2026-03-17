@@ -1,0 +1,38 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  api_key_id: ''
+  authentication_credentials: ''
+  auto_rotate: ''
+  delete_protection: false
+  description: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  password_length: ''
+  rotation_event_in: []
+  rotation_hour: 0
+  rotation_interval: ''
+  rotator_type: ''
+  tags: []
+  target_name: ''
+secrets:
+  api_key: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

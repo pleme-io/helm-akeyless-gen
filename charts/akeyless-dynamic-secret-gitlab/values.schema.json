@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "gitlab_access_type": {
+          "description": "GitLab access type: personal or project",
+          "type": "string"
+        },
+        "gitlab_role": {
+          "description": "GitLab role for dynamic tokens",
+          "type": "string"
+        },
+        "gitlab_token_scopes": {
+          "description": "GitLab token scopes (comma-separated)",
+          "type": "string"
+        },
+        "gitlab_url": {
+          "default": "https://gitlab.com/",
+          "description": "GitLab URL (for self-hosted)",
+          "type": "string"
+        },
+        "group_name": {
+          "description": "GitLab group name",
+          "type": "string"
+        },
+        "installation_organization": {
+          "description": "GitLab organization",
+          "type": "string"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "name": {
+          "description": "Dynamic secret name",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for the producer",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "target_name": {
+          "description": "Target name associated with this producer",
+          "type": "string"
+        },
+        "ttl": {
+          "description": "Access Token TTL",
+          "type": "string"
+        }
+      },
+      "required": [
+        "gitlab_access_type",
+        "gitlab_token_scopes",
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "gitlab_access_token": {
+          "description": "GitLab personal access token",
+          "type": "string"
+        },
+        "gitlab_certificate": {
+          "description": "GitLab TLS certificate (PEM)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_dynamic_secret_gitlab values",
+  "type": "object"
+}

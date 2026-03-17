@@ -1,0 +1,31 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dfc-key.fullname" . }}
+  labels:
+    {{- include "akeyless-dfc-key.labels" . | nindent 4 }}
+data:
+  alg: {{ .Values.config.alg | quote }}
+  auto-rotate: {{ .Values.config.auto_rotate | quote }}
+  certificate-common-name: {{ .Values.config.certificate_common_name | quote }}
+  certificate-country: {{ .Values.config.certificate_country | quote }}
+  certificate-digest-algo: {{ .Values.config.certificate_digest_algo | quote }}
+  certificate-format: {{ .Values.config.certificate_format | quote }}
+  certificate-locality: {{ .Values.config.certificate_locality | quote }}
+  certificate-organization: {{ .Values.config.certificate_organization | quote }}
+  certificate-province: {{ .Values.config.certificate_province | quote }}
+  certificate-ttl: {{ .Values.config.certificate_ttl | quote }}
+  customer-frg-id: {{ .Values.config.customer_frg_id | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  generate-self-signed-certificate: {{ .Values.config.generate_self_signed_certificate | quote }}
+  hash-algorithm: {{ .Values.config.hash_algorithm | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-interval: {{ .Values.config.rotation_interval | quote }}
+  split-level: {{ .Values.config.split_level | quote }}
+  tag: {{ .Values.config.tag | quote }}
+{{- end }}

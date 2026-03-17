@@ -1,0 +1,44 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  api_id: ''
+  authentication_credentials: ''
+  auto_rotate: ''
+  aws_region: ''
+  delete_protection: false
+  description: ''
+  grace_rotation: ''
+  grace_rotation_hour: 0
+  grace_rotation_interval: ''
+  grace_rotation_timing: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  password_length: ''
+  rotate_after_disconnect: ''
+  rotation_event_in: []
+  rotation_hour: 0
+  rotation_interval: ''
+  rotator_type: ''
+  tags: []
+  target_name: ''
+secrets:
+  api_key: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

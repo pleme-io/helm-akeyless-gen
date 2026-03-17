@@ -1,0 +1,20 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-salesforce.fullname" . }}
+  labels:
+    {{- include "akeyless-target-salesforce.labels" . | nindent 4 }}
+data:
+  app-private-key-data: {{ .Values.config.app_private_key_data | quote }}
+  auth-flow: {{ .Values.config.auth_flow | quote }}
+  ca-cert-data: {{ .Values.config.ca_cert_data | quote }}
+  ca-cert-name: {{ .Values.config.ca_cert_name | quote }}
+  client-id: {{ .Values.config.client_id | quote }}
+  description: {{ .Values.config.description | quote }}
+  email: {{ .Values.config.email | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  tenant-url: {{ .Values.config.tenant_url | quote }}
+{{- end }}

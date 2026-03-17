@@ -1,0 +1,33 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  accessibility: ''
+  audience: ''
+  delete_protection: ''
+  description: ''
+  item_custom_fields: {}
+  key: ''
+  name: ''
+  permission_assignment: ''
+  public: false
+  redirect_uris: ''
+  scopes: ''
+  tags: []
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

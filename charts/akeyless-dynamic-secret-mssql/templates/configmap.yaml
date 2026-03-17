@@ -1,0 +1,27 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-mssql.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-mssql.labels" . | nindent 4 }}
+data:
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  mssql-allowed-db-names: {{ .Values.config.mssql_allowed_db_names | quote }}
+  mssql-create-statements: {{ .Values.config.mssql_create_statements | quote }}
+  mssql-dbname: {{ .Values.config.mssql_dbname | quote }}
+  mssql-host: {{ .Values.config.mssql_host | quote }}
+  mssql-port: {{ .Values.config.mssql_port | quote }}
+  mssql-revocation-statements: {{ .Values.config.mssql_revocation_statements | quote }}
+  mssql-username: {{ .Values.config.mssql_username | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
+  secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "allow_user_extend_session": {
+          "description": "AllowUserExtendSession",
+          "type": "integer"
+        },
+        "custom_username_template": {
+          "description": "Customize how temporary usernames are generated using go template",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "fixed_user_claim_keyname": {
+          "default": "ext_username",
+          "description": "For externally provided users, denotes the key-name of IdP claim to extract the username from (relevant only for fixed-user-only=true)",
+          "type": "string"
+        },
+        "fixed_user_only": {
+          "default": "false",
+          "description": "Allow access using externally (IdP) provided username [true/false]",
+          "type": "string"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "name": {
+          "description": "Dynamic secret name",
+          "type": "string"
+        },
+        "password_length": {
+          "description": "The length of the password to be generated",
+          "type": "string"
+        },
+        "producer_encryption_key_name": {
+          "description": "Dynamic producer encryption key",
+          "type": "string"
+        },
+        "rdp_admin_name": {
+          "description": "RDP admin username",
+          "type": "string"
+        },
+        "rdp_host_name": {
+          "description": "RDP host address",
+          "type": "string"
+        },
+        "rdp_host_port": {
+          "default": "22",
+          "description": "RDP port (default: 3389)",
+          "type": "string"
+        },
+        "rdp_user_groups": {
+          "description": "RDP user groups for dynamic users",
+          "type": "string"
+        },
+        "secure_access_delay": {
+          "description": "The delay duration, in seconds, to wait after generating just-in-time credentials. Accepted range: 0-120 seconds",
+          "type": "integer"
+        },
+        "secure_access_rd_gateway_server": {
+          "description": "RD Gateway server",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for the producer",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "target_name": {
+          "description": "Target name associated with this producer",
+          "type": "string"
+        },
+        "user_ttl": {
+          "default": "60m",
+          "description": "User TTL (e.g., 60m, 12h)",
+          "type": "string"
+        },
+        "warn_user_before_expiration": {
+          "description": "WarnBeforeUserExpiration",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "rdp_admin_pwd": {
+          "description": "RDP admin password",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_dynamic_secret_rdp values",
+  "type": "object"
+}

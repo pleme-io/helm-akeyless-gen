@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-artifactory.fullname" . }}
+  labels:
+    {{- include "akeyless-target-artifactory.labels" . | nindent 4 }}
+data:
+  artifactory-admin-name: {{ .Values.config.artifactory_admin_name | quote }}
+  base-url: {{ .Values.config.base_url | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+{{- end }}

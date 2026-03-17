@@ -1,0 +1,36 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-auth-method-kerberos.fullname" . }}
+  labels:
+    {{- include "akeyless-auth-method-kerberos.labels" . | nindent 4 }}
+data:
+  access-expires: {{ .Values.config.access_expires | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
+  bind-dn: {{ .Values.config.bind_dn | quote }}
+  bind-dn-password: {{ .Values.config.bind_dn_password | quote }}
+  bound-ips: {{ .Values.config.bound_ips | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
+  group-attr: {{ .Values.config.group_attr | quote }}
+  group-dn: {{ .Values.config.group_dn | quote }}
+  group-filter: {{ .Values.config.group_filter | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
+  keytab-file-path: {{ .Values.config.keytab_file_path | quote }}
+  krb5-conf-data: {{ .Values.config.krb5_conf_data | quote }}
+  krb5-conf-path: {{ .Values.config.krb5_conf_path | quote }}
+  ldap-anonymous-search: {{ .Values.config.ldap_anonymous_search | quote }}
+  ldap-ca-cert: {{ .Values.config.ldap_ca_cert | quote }}
+  ldap-url: {{ .Values.config.ldap_url | quote }}
+  name: {{ .Values.config.name | quote }}
+  product-type: {{ .Values.config.product_type | quote }}
+  subclaims-delimiters: {{ .Values.config.subclaims_delimiters | quote }}
+  unique-identifier: {{ .Values.config.unique_identifier | quote }}
+  user-attribute: {{ .Values.config.user_attribute | quote }}
+  user-dn: {{ .Values.config.user_dn | quote }}
+{{- end }}

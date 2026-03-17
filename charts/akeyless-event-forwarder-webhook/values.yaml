@@ -1,0 +1,37 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  auth_methods_event_source_locations: []
+  auth_token: ''
+  auth_type: ''
+  client_cert_data: ''
+  description: ''
+  event_types: []
+  every: ''
+  gateways_event_source_locations: []
+  items_event_source_locations: []
+  key: ''
+  name: ''
+  private_key_data: ''
+  runner_type: ''
+  server_certificates: ''
+  targets_event_source_locations: []
+  url: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

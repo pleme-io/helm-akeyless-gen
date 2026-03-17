@@ -1,0 +1,13 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-group.fullname" . }}
+  labels:
+    {{- include "akeyless-group.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  group-alias: {{ .Values.config.group_alias | quote }}
+  name: {{ .Values.config.name | quote }}
+  user-assignment: {{ .Values.config.user_assignment | quote }}
+{{- end }}

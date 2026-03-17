@@ -1,0 +1,12 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-kmip-client.fullname" . }}
+  labels:
+    {{- include "akeyless-kmip-client.labels" . | nindent 4 }}
+data:
+  activate-keys-on-creation: {{ .Values.config.activate_keys_on_creation | quote }}
+  certificate-ttl: {{ .Values.config.certificate_ttl | quote }}
+  name: {{ .Values.config.name | quote }}
+{{- end }}

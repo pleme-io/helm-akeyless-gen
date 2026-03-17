@@ -1,0 +1,32 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  bind_dn: ''
+  description: ''
+  key: ''
+  ldap_ca_cert: ''
+  ldap_url: ''
+  max_versions: ''
+  name: ''
+  server_type: ''
+  token_expiration: ''
+secrets:
+  bind_dn_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

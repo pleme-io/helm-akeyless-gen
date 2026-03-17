@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "certificate_data": {
+          "description": "Content of the certificate in a Base64 format.",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Protection from accidental deletion of this object [true/false]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "expiration_event_in": {
+          "description": "How many days before the expiration of the certificate would you like to be notified.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "format": {
+          "description": "CertificateFormat of the certificate and private key, possible values: cer,crt,pem,pfx,p12.\nRequired when passing inline certificate content with --certificate-data or --key-data, otherwise format is derived from the file extension.",
+          "type": "string"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "key": {
+          "description": "The name of a key to use to encrypt the certificate's key (if empty, the\naccount default protectionKey key will be used)",
+          "type": "string"
+        },
+        "key_data": {
+          "description": "Content of the certificate's private key in a Base64 format.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Certificate name",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Add tags attached to this object",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_certificate values",
+  "type": "object"
+}

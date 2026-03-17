@@ -1,0 +1,17 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-splunk.fullname" . }}
+  labels:
+    {{- include "akeyless-target-splunk.labels" . | nindent 4 }}
+data:
+  audience: {{ .Values.config.audience | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  token-owner: {{ .Values.config.token_owner | quote }}
+  url: {{ .Values.config.url | quote }}
+  use-tls: {{ .Values.config.use_tls | quote }}
+{{- end }}

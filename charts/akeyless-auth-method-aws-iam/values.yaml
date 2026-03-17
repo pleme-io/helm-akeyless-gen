@@ -1,0 +1,42 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  access_expires: 0
+  allowed_client_type: []
+  audit_logs_claims: []
+  bound_arn: []
+  bound_aws_account_id: []
+  bound_ips: []
+  bound_resource_id: []
+  bound_role_id: []
+  bound_role_name: []
+  bound_user_id: []
+  bound_user_name: []
+  delete_protection: false
+  description: ''
+  expiration_event_in: []
+  force_sub_claims: false
+  gw_bound_ips: []
+  jwt_ttl: 0
+  name: ''
+  product_type: []
+  sts_url: ''
+  unique_identifier: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

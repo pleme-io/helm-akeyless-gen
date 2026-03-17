@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "binary_value": {
+          "description": "Use this option if the universal secrets value is a base64 encoded binary",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the universal secrets",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "The namespace (relevant for Hashi vault target)",
+          "type": "string"
+        },
+        "object_type": {
+          "type": "string"
+        },
+        "pfx_password": {
+          "description": "Optional, the passphrase that protects the private key within the pfx certificate (Relevant only for Azure KV certificates)",
+          "type": "string"
+        },
+        "region": {
+          "description": "Optional, create secret in a specific region (GCP only).\nIf empty, a global secret will be created (provider default).",
+          "type": "string"
+        },
+        "secret_name": {
+          "description": "Name for the new universal secrets",
+          "type": "string"
+        },
+        "tags": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Tags for the universal secrets",
+          "type": "object"
+        },
+        "usc_encryption_key": {
+          "description": "Optional, The name of the remote key that used to encrypt the secret value (if empty, the default key will be used)",
+          "type": "string"
+        },
+        "usc_name": {
+          "description": "Name of the Universal Secrets Connector item",
+          "type": "string"
+        },
+        "value": {
+          "description": "Value of the universal secrets item, either text or base64 encoded binary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "secret_name",
+        "usc_name",
+        "value"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_usc values",
+  "type": "object"
+}

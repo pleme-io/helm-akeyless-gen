@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-policy.fullname" . }}
+  labels:
+    {{- include "akeyless-policy.labels" . | nindent 4 }}
+data:
+  allowed-algorithms: {{ .Values.config.allowed_algorithms | quote }}
+  allowed-key-names: {{ .Values.config.allowed_key_names | quote }}
+  allowed-key-types: {{ .Values.config.allowed_key_types | quote }}
+  max-rotation-interval-days: {{ .Values.config.max_rotation_interval_days | quote }}
+  object-types: {{ .Values.config.object_types | quote }}
+  path: {{ .Values.config.path | quote }}
+{{- end }}

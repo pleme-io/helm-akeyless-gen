@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-rabbitmq.fullname" . }}
+  labels:
+    {{- include "akeyless-target-rabbitmq.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  rabbitmq-server-uri: {{ .Values.config.rabbitmq_server_uri | quote }}
+  rabbitmq-server-user: {{ .Values.config.rabbitmq_server_user | quote }}
+{{- end }}

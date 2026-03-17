@@ -1,0 +1,22 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-event-forwarder-email.fullname" . }}
+  labels:
+    {{- include "akeyless-event-forwarder-email.labels" . | nindent 4 }}
+data:
+  auth-methods-event-source-locations: {{ .Values.config.auth_methods_event_source_locations | quote }}
+  description: {{ .Values.config.description | quote }}
+  email-to: {{ .Values.config.email_to | quote }}
+  event-types: {{ .Values.config.event_types | quote }}
+  every: {{ .Values.config.every | quote }}
+  gateways-event-source-locations: {{ .Values.config.gateways_event_source_locations | quote }}
+  include-error: {{ .Values.config.include_error | quote }}
+  items-event-source-locations: {{ .Values.config.items_event_source_locations | quote }}
+  key: {{ .Values.config.key | quote }}
+  name: {{ .Values.config.name | quote }}
+  override-url: {{ .Values.config.override_url | quote }}
+  runner-type: {{ .Values.config.runner_type | quote }}
+  targets-event-source-locations: {{ .Values.config.targets_event_source_locations | quote }}
+{{- end }}

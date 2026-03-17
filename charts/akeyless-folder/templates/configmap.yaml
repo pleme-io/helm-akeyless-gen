@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-folder.fullname" . }}
+  labels:
+    {{- include "akeyless-folder.labels" . | nindent 4 }}
+data:
+  accessibility: {{ .Values.config.accessibility | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  name: {{ .Values.config.name | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  type: {{ .Values.config.type | quote }}
+{{- end }}

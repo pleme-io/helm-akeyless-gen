@@ -1,0 +1,21 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-oidc-app.fullname" . }}
+  labels:
+    {{- include "akeyless-oidc-app.labels" . | nindent 4 }}
+data:
+  accessibility: {{ .Values.config.accessibility | quote }}
+  audience: {{ .Values.config.audience | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  key: {{ .Values.config.key | quote }}
+  name: {{ .Values.config.name | quote }}
+  permission-assignment: {{ .Values.config.permission_assignment | quote }}
+  public: {{ .Values.config.public | quote }}
+  redirect-uris: {{ .Values.config.redirect_uris | quote }}
+  scopes: {{ .Values.config.scopes | quote }}
+  tags: {{ .Values.config.tags | quote }}
+{{- end }}

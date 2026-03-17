@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "app_private_key_data": {
+          "description": "Base64 encoded PEM of the connected app private key (relevant for JWT auth only)",
+          "type": "string"
+        },
+        "auth_flow": {
+          "description": "Salesforce auth flow: user-password or jwt-bearer",
+          "type": "string"
+        },
+        "ca_cert_data": {
+          "description": "Base64 encoded PEM cert to use when uploading a new key to Salesforce",
+          "type": "string"
+        },
+        "ca_cert_name": {
+          "description": "name of the certificate in Salesforce tenant to use when uploading new key",
+          "type": "string"
+        },
+        "client_id": {
+          "description": "Salesforce connected app client ID",
+          "type": "string"
+        },
+        "description": {
+          "description": "Target description",
+          "type": "string"
+        },
+        "email": {
+          "description": "The email of the user attached to the oauth2 app used for connecting to Salesforce",
+          "type": "string"
+        },
+        "key": {
+          "description": "The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)",
+          "type": "string"
+        },
+        "max_versions": {
+          "description": "Set the maximum number of versions, limited by the account settings defaults.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Target name",
+          "type": "string"
+        },
+        "tenant_url": {
+          "description": "Salesforce tenant URL",
+          "type": "string"
+        }
+      },
+      "required": [
+        "auth_flow",
+        "client_id",
+        "email",
+        "name",
+        "tenant_url"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "client_secret": {
+          "description": "Salesforce connected app client secret",
+          "type": "string"
+        },
+        "security_token": {
+          "description": "Salesforce security token",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_target_salesforce values",
+  "type": "object"
+}

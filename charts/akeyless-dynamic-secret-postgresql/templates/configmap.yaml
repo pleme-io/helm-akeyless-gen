@@ -1,0 +1,27 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-postgresql.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-postgresql.labels" . | nindent 4 }}
+data:
+  creation-statements: {{ .Values.config.creation_statements | quote }}
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  postgresql-db-name: {{ .Values.config.postgresql_db_name | quote }}
+  postgresql-host: {{ .Values.config.postgresql_host | quote }}
+  postgresql-port: {{ .Values.config.postgresql_port | quote }}
+  postgresql-username: {{ .Values.config.postgresql_username | quote }}
+  producer-encryption-key: {{ .Values.config.producer_encryption_key | quote }}
+  revocation-statement: {{ .Values.config.revocation_statement | quote }}
+  secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
+  ssl: {{ .Values.config.ssl | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

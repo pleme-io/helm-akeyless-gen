@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "azure_cloud": {
+          "default": "AzureCloud",
+          "description": "Azure cloud environment to use. Values: AzureCloud (default), AzureUSGovernment, AzureChinaCloud.",
+          "type": "string"
+        },
+        "client_id": {
+          "description": "Azure client/application ID",
+          "type": "string"
+        },
+        "connection_type": {
+          "default": "credentials",
+          "description": "Type of connection [credentials/cloud-identity]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Target description",
+          "type": "string"
+        },
+        "key": {
+          "description": "The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)",
+          "type": "string"
+        },
+        "max_versions": {
+          "description": "Set the maximum number of versions, limited by the account settings defaults.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Target name",
+          "type": "string"
+        },
+        "resource_group_name": {
+          "description": "Azure resource group name",
+          "type": "string"
+        },
+        "resource_name": {
+          "description": "Azure resource name",
+          "type": "string"
+        },
+        "subscription_id": {
+          "description": "Azure subscription ID",
+          "type": "string"
+        },
+        "tenant_id": {
+          "description": "Azure tenant ID",
+          "type": "string"
+        },
+        "use_gw_cloud_identity": {
+          "description": "Use gateway cloud identity for authentication",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "client_secret": {
+          "description": "Azure client secret",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_target_azure values",
+  "type": "object"
+}

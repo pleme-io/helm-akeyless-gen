@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "description": {
+          "description": "Target description",
+          "type": "string"
+        },
+        "github_app_id": {
+          "description": "GitHub App ID",
+          "type": "integer"
+        },
+        "github_base_url": {
+          "default": "https://api.github.com/",
+          "description": "GitHub base URL (for GitHub Enterprise)",
+          "type": "string"
+        },
+        "key": {
+          "description": "The name of a key that used to encrypt the target secret value (if empty, the account default protectionKey key will be used)",
+          "type": "string"
+        },
+        "max_versions": {
+          "description": "Set the maximum number of versions, limited by the account settings defaults.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Target name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "github_app_private_key": {
+          "description": "GitHub App private key (PEM)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_target_github values",
+  "type": "object"
+}

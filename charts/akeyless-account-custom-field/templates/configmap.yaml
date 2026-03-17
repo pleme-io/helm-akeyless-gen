@@ -1,0 +1,13 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-account-custom-field.fullname" . }}
+  labels:
+    {{- include "akeyless-account-custom-field.labels" . | nindent 4 }}
+data:
+  name: {{ .Values.config.name | quote }}
+  object: {{ .Values.config.object | quote }}
+  object-type: {{ .Values.config.object_type | quote }}
+  required: {{ .Values.config.required | quote }}
+{{- end }}

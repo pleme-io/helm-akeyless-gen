@@ -1,0 +1,43 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  allow_user_extend_session: 0
+  custom_username_template: ''
+  delete_protection: false
+  description: ''
+  fixed_user_claim_keyname: ''
+  fixed_user_only: ''
+  item_custom_fields: {}
+  name: ''
+  password_length: ''
+  producer_encryption_key_name: ''
+  rdp_admin_name: ''
+  rdp_host_name: ''
+  rdp_host_port: ''
+  rdp_user_groups: ''
+  secure_access_delay: 0
+  secure_access_rd_gateway_server: ''
+  tags: []
+  target_name: ''
+  user_ttl: ''
+  warn_user_before_expiration: 0
+secrets:
+  rdp_admin_pwd: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,25 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-gateway-k8s-auth-config.fullname" . }}
+  labels:
+    {{- include "akeyless-gateway-k8s-auth-config.labels" . | nindent 4 }}
+data:
+  access-id: {{ .Values.config.access_id | quote }}
+  cluster-api-type: {{ .Values.config.cluster_api_type | quote }}
+  disable-issuer-validation: {{ .Values.config.disable_issuer_validation | quote }}
+  k8s-auth-type: {{ .Values.config.k8s_auth_type | quote }}
+  k8s-ca-cert: {{ .Values.config.k8s_ca_cert | quote }}
+  k8s-client-certificate: {{ .Values.config.k8s_client_certificate | quote }}
+  k8s-client-key: {{ .Values.config.k8s_client_key | quote }}
+  k8s-host: {{ .Values.config.k8s_host | quote }}
+  k8s-issuer: {{ .Values.config.k8s_issuer | quote }}
+  name: {{ .Values.config.name | quote }}
+  rancher-api-key: {{ .Values.config.rancher_api_key | quote }}
+  rancher-cluster-id: {{ .Values.config.rancher_cluster_id | quote }}
+  signing-key: {{ .Values.config.signing_key | quote }}
+  token-exp: {{ .Values.config.token_exp | quote }}
+  token-reviewer-jwt: {{ .Values.config.token_reviewer_jwt | quote }}
+  use-gw-service-account: {{ .Values.config.use_gw_service_account | quote }}
+{{- end }}

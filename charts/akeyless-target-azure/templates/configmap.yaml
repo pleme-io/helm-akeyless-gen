@@ -1,0 +1,21 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-azure.fullname" . }}
+  labels:
+    {{- include "akeyless-target-azure.labels" . | nindent 4 }}
+data:
+  azure-cloud: {{ .Values.config.azure_cloud | quote }}
+  client-id: {{ .Values.config.client_id | quote }}
+  connection-type: {{ .Values.config.connection_type | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  resource-group-name: {{ .Values.config.resource_group_name | quote }}
+  resource-name: {{ .Values.config.resource_name | quote }}
+  subscription-id: {{ .Values.config.subscription_id | quote }}
+  tenant-id: {{ .Values.config.tenant_id | quote }}
+  use-gw-cloud-identity: {{ .Values.config.use_gw_cloud_identity | quote }}
+{{- end }}

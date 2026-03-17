@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "accessibility": {
+          "default": "regular",
+          "description": "Secret accessibility: regular or personal",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "format": {
+          "default": "text",
+          "description": "Secret format [text/json/key-value] (relevant only for type 'generic')",
+          "type": "string"
+        },
+        "max_versions": {
+          "description": "Set the maximum number of versions, limited by the account settings defaults.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Secret name",
+          "type": "string"
+        },
+        "protection_key": {
+          "description": "Encryption key name for the secret",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Add tags attached to this object",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "type": {
+          "default": "generic",
+          "description": "The secret sub type [generic/password]",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "value": {
+          "description": "The secret value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    }
+  },
+  "title": "akeyless_static_secret values",
+  "type": "object"
+}

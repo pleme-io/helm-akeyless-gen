@@ -1,0 +1,28 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-snowflake.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-snowflake.labels" . | nindent 4 }}
+data:
+  account: {{ .Values.config.account | quote }}
+  account-password: {{ .Values.config.account_password | quote }}
+  account-username: {{ .Values.config.account_username | quote }}
+  auth-mode: {{ .Values.config.auth_mode | quote }}
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  db-name: {{ .Values.config.db_name | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  key-algo: {{ .Values.config.key_algo | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  private-key: {{ .Values.config.private_key | quote }}
+  private-key-passphrase: {{ .Values.config.private_key_passphrase | quote }}
+  role: {{ .Values.config.role | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+  warehouse: {{ .Values.config.warehouse | quote }}
+{{- end }}

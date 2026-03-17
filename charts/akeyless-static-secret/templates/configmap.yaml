@@ -1,0 +1,18 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-static-secret.fullname" . }}
+  labels:
+    {{- include "akeyless-static-secret.labels" . | nindent 4 }}
+data:
+  accessibility: {{ .Values.config.accessibility | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  format: {{ .Values.config.format | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  protection-key: {{ .Values.config.protection_key | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  type: {{ .Values.config.type | quote }}
+{{- end }}

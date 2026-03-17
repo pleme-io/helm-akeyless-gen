@@ -1,0 +1,50 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  access_expires: 0
+  allowed_client_type: []
+  audit_logs_claims: []
+  bind_dn: ''
+  bind_dn_password: ''
+  bound_ips: []
+  delete_protection: false
+  description: ''
+  expiration_event_in: []
+  force_sub_claims: false
+  group_attr: ''
+  group_dn: ''
+  group_filter: ''
+  gw_bound_ips: []
+  jwt_ttl: 0
+  keytab_file_path: ''
+  krb5_conf_data: ''
+  krb5_conf_path: ''
+  ldap_anonymous_search: false
+  ldap_ca_cert: ''
+  ldap_url: ''
+  name: ''
+  product_type: []
+  subclaims_delimiters: []
+  unique_identifier: ''
+  user_attribute: ''
+  user_dn: ''
+secrets:
+  keytab_file_data: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

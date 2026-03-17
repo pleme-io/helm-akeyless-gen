@@ -1,0 +1,64 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  allow_any_name: false
+  allow_copy_ext_from_csr: false
+  allow_subdomains: false
+  allowed_domains: ''
+  allowed_extra_extensions: ''
+  allowed_ip_sans: ''
+  allowed_uri_sans: ''
+  auto_renew: false
+  ca_target: ''
+  client_flag: false
+  code_signing_flag: false
+  country: ''
+  create_private_crl: false
+  create_private_ocsp: false
+  create_public_crl: false
+  create_public_ocsp: false
+  critical_key_usage: ''
+  delete_protection: false
+  description: ''
+  destination_path: ''
+  disable_wildcards: false
+  enable_acme: false
+  expiration_event_in: []
+  gw_cluster_url: ''
+  is_ca: false
+  key_usage: ''
+  locality: ''
+  max_path_len: 0
+  name: ''
+  not_enforce_hostnames: false
+  not_require_cn: false
+  ocsp_ttl: ''
+  organizational_units: ''
+  organizations: ''
+  postal_code: ''
+  protect_certificates: false
+  province: ''
+  scheduled_renew: 0
+  server_flag: false
+  signer_key_name: ''
+  street_address: ''
+  tag: []
+  ttl: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

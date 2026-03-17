@@ -1,0 +1,19 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-globalsign.fullname" . }}
+  labels:
+    {{- include "akeyless-target-globalsign.labels" . | nindent 4 }}
+data:
+  contact-email: {{ .Values.config.contact_email | quote }}
+  contact-first-name: {{ .Values.config.contact_first_name | quote }}
+  contact-last-name: {{ .Values.config.contact_last_name | quote }}
+  contact-phone: {{ .Values.config.contact_phone | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  profile-id: {{ .Values.config.profile_id | quote }}
+  timeout: {{ .Values.config.timeout | quote }}
+{{- end }}

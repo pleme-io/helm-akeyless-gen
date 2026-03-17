@@ -1,0 +1,33 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  acme_challenge: ''
+  description: ''
+  dns_target_creds: ''
+  email: ''
+  gcp_project: ''
+  hosted_zone: ''
+  key: ''
+  lets_encrypt_url: ''
+  max_versions: ''
+  name: ''
+  resource_group: ''
+  timeout: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,21 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-lets-encrypt.fullname" . }}
+  labels:
+    {{- include "akeyless-target-lets-encrypt.labels" . | nindent 4 }}
+data:
+  acme-challenge: {{ .Values.config.acme_challenge | quote }}
+  description: {{ .Values.config.description | quote }}
+  dns-target-creds: {{ .Values.config.dns_target_creds | quote }}
+  email: {{ .Values.config.email | quote }}
+  gcp-project: {{ .Values.config.gcp_project | quote }}
+  hosted-zone: {{ .Values.config.hosted_zone | quote }}
+  key: {{ .Values.config.key | quote }}
+  lets-encrypt-url: {{ .Values.config.lets_encrypt_url | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  resource-group: {{ .Values.config.resource_group | quote }}
+  timeout: {{ .Values.config.timeout | quote }}
+{{- end }}

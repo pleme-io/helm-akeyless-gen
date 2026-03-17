@@ -1,0 +1,25 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-redshift.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-redshift.labels" . | nindent 4 }}
+data:
+  creation-statements: {{ .Values.config.creation_statements | quote }}
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  producer-encryption-key: {{ .Values.config.producer_encryption_key | quote }}
+  redshift-db-name: {{ .Values.config.redshift_db_name | quote }}
+  redshift-host: {{ .Values.config.redshift_host | quote }}
+  redshift-port: {{ .Values.config.redshift_port | quote }}
+  redshift-username: {{ .Values.config.redshift_username | quote }}
+  ssl: {{ .Values.config.ssl | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

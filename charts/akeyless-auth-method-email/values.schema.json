@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "access_expires": {
+          "default": 0,
+          "description": "Access expiration in Unix time (0 = no expiry)",
+          "type": "integer"
+        },
+        "allowed_client_type": {
+          "description": "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "audit_logs_claims": {
+          "description": "Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_ips": {
+          "description": "CIDR whitelist for access",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Auth Method description",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address for this auth method",
+          "type": "string"
+        },
+        "enable_mfa": {
+          "description": "Enable MFA for this authentication method [True / False]",
+          "type": "string"
+        },
+        "expiration_event_in": {
+          "description": "How many days before the expiration of the auth method would you like to be notified.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "force_sub_claims": {
+          "description": "Force sub-claims enforcement",
+          "type": "boolean"
+        },
+        "gw_bound_ips": {
+          "description": "Gateway CIDR whitelist",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "jwt_ttl": {
+          "default": 0,
+          "description": "JWT TTL in seconds",
+          "type": "integer"
+        },
+        "mfa_type": {
+          "default": "email",
+          "description": "Enable two-factor-authentication via [email/auth app]",
+          "type": "string"
+        },
+        "name": {
+          "description": "Auth Method name",
+          "type": "string"
+        },
+        "product_type": {
+          "description": "Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "email",
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_auth_method_email values",
+  "type": "object"
+}

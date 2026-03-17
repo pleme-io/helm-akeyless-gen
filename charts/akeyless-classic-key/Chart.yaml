@@ -1,0 +1,14 @@
+apiVersion: v2
+name: akeyless-classic-key
+description: Manages a classic cryptographic key
+type: application
+version: 0.1.0
+appVersion: 1.0.0
+dependencies:
+- name: pleme-lib
+  version: ~0.4.0
+  repository: file://../pleme-lib
+annotations:
+  pleme.io/category: key
+  pleme.io/generated: 'true'
+  pleme.io/provider: akeyless

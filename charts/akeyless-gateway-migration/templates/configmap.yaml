@@ -1,0 +1,78 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-gateway-migration.fullname" . }}
+  labels:
+    {{- include "akeyless-gateway-migration.labels" . | nindent 4 }}
+data:
+  ServiceAccountKeyDecoded: {{ .Values.config.ServiceAccountKeyDecoded | quote }}
+  ad-auto-rotate: {{ .Values.config.ad_auto_rotate | quote }}
+  ad-cert-expiration-event-in: {{ .Values.config.ad_cert_expiration_event_in | quote }}
+  ad-certificates-path-template: {{ .Values.config.ad_certificates_path_template | quote }}
+  ad-computer-base-dn: {{ .Values.config.ad_computer_base_dn | quote }}
+  ad-discover-iis-app: {{ .Values.config.ad_discover_iis_app | quote }}
+  ad-discover-services: {{ .Values.config.ad_discover_services | quote }}
+  ad-discovery-types: {{ .Values.config.ad_discovery_types | quote }}
+  ad-domain-name: {{ .Values.config.ad_domain_name | quote }}
+  ad-domain-users-path-template: {{ .Values.config.ad_domain_users_path_template | quote }}
+  ad-local-users-ignore: {{ .Values.config.ad_local_users_ignore | quote }}
+  ad-local-users-path-template: {{ .Values.config.ad_local_users_path_template | quote }}
+  ad-os-filter: {{ .Values.config.ad_os_filter | quote }}
+  ad-rotation-hour: {{ .Values.config.ad_rotation_hour | quote }}
+  ad-rotation-interval: {{ .Values.config.ad_rotation_interval | quote }}
+  ad-sra-enable-rdp: {{ .Values.config.ad_sra_enable_rdp | quote }}
+  ad-ssh-port: {{ .Values.config.ad_ssh_port | quote }}
+  ad-target-format: {{ .Values.config.ad_target_format | quote }}
+  ad-target-name: {{ .Values.config.ad_target_name | quote }}
+  ad-targets-path-template: {{ .Values.config.ad_targets_path_template | quote }}
+  ad-targets-type: {{ .Values.config.ad_targets_type | quote }}
+  ad-user-base-dn: {{ .Values.config.ad_user_base_dn | quote }}
+  ad-user-groups: {{ .Values.config.ad_user_groups | quote }}
+  ad-winrm-over-http: {{ .Values.config.ad_winrm_over_http | quote }}
+  ad-winrm-port: {{ .Values.config.ad_winrm_port | quote }}
+  ad-discover-local-users: {{ .Values.config.ad_discover_local_users | quote }}
+  ai-certificate-discovery: {{ .Values.config.ai_certificate_discovery | quote }}
+  aws-key: {{ .Values.config.aws_key | quote }}
+  aws-key-id: {{ .Values.config.aws_key_id | quote }}
+  aws-region: {{ .Values.config.aws_region | quote }}
+  azure-client-id: {{ .Values.config.azure_client_id | quote }}
+  azure-kv-name: {{ .Values.config.azure_kv_name | quote }}
+  azure-secret: {{ .Values.config.azure_secret | quote }}
+  azure-tenant-id: {{ .Values.config.azure_tenant_id | quote }}
+  conjur-account: {{ .Values.config.conjur_account | quote }}
+  conjur-api-key: {{ .Values.config.conjur_api_key | quote }}
+  conjur-url: {{ .Values.config.conjur_url | quote }}
+  conjur-username: {{ .Values.config.conjur_username | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  gcp-key: {{ .Values.config.gcp_key | quote }}
+  gcp-project-id: {{ .Values.config.gcp_project_id | quote }}
+  hashi-json: {{ .Values.config.hashi_json | quote }}
+  hashi-ns: {{ .Values.config.hashi_ns | quote }}
+  hashi-token: {{ .Values.config.hashi_token | quote }}
+  hashi-url: {{ .Values.config.hashi_url | quote }}
+  hosts: {{ .Values.config.hosts | quote }}
+  k8s-ca-certificate: {{ .Values.config.k8s_ca_certificate | quote }}
+  k8s-client-certificate: {{ .Values.config.k8s_client_certificate | quote }}
+  k8s-client-key: {{ .Values.config.k8s_client_key | quote }}
+  k8s-namespace: {{ .Values.config.k8s_namespace | quote }}
+  k8s-password: {{ .Values.config.k8s_password | quote }}
+  k8s-skip-system: {{ .Values.config.k8s_skip_system | quote }}
+  k8s-token: {{ .Values.config.k8s_token | quote }}
+  k8s-url: {{ .Values.config.k8s_url | quote }}
+  k8s-username: {{ .Values.config.k8s_username | quote }}
+  name: {{ .Values.config.name | quote }}
+  port-ranges: {{ .Values.config.port_ranges | quote }}
+  protection-key: {{ .Values.config.protection_key | quote }}
+  si-auto-rotate: {{ .Values.config.si_auto_rotate | quote }}
+  si-rotation-hour: {{ .Values.config.si_rotation_hour | quote }}
+  si-rotation-interval: {{ .Values.config.si_rotation_interval | quote }}
+  si-sra-enable-rdp: {{ .Values.config.si_sra_enable_rdp | quote }}
+  si-target-name: {{ .Values.config.si_target_name | quote }}
+  si-user-groups: {{ .Values.config.si_user_groups | quote }}
+  si-users-ignore: {{ .Values.config.si_users_ignore | quote }}
+  si-users-path-template: {{ .Values.config.si_users_path_template | quote }}
+  target-location: {{ .Values.config.target_location | quote }}
+  type: {{ .Values.config.type | quote }}
+  use-gw-cloud-identity: {{ .Values.config.use_gw_cloud_identity | quote }}
+{{- end }}

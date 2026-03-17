@@ -1,0 +1,36 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  artifactory_admin_name: ''
+  artifactory_token_audience: ''
+  artifactory_token_scope: ''
+  base_url: ''
+  custom_username_template: ''
+  delete_protection: false
+  description: ''
+  item_custom_fields: {}
+  name: ''
+  producer_encryption_key_name: ''
+  tags: []
+  target_name: ''
+  user_ttl: ''
+secrets:
+  artifactory_admin_pwd: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,32 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  accessibility: ''
+  delete_protection: false
+  description: ''
+  format: ''
+  max_versions: ''
+  name: ''
+  protection_key: ''
+  tags: []
+  type: ''
+secrets:
+  value: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "SubClaimsCaseInsensitive": {
+          "type": "boolean"
+        },
+        "access_id": {
+          "description": "The access ID to attach to this allowed access",
+          "type": "string"
+        },
+        "case_sensitive": {
+          "default": "true",
+          "description": "Treat sub claims as case-sensitive [true/false]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Allowed access description",
+          "type": "string"
+        },
+        "name": {
+          "description": "Allowed access name",
+          "type": "string"
+        },
+        "permissions": {
+          "description": "Comma-separated list of permissions: defaults, targets, classic_keys, automatic_migration, ldap_auth, dynamic_secret, k8s_auth, log_forwarding, zero_knowledge_encryption, rotated_secret, caching, event_forwarding, admin, kmip, general, rotate_secret_value",
+          "type": "string"
+        },
+        "sub_claims": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Key/val of sub claims, e.g. group=admins,developers",
+          "type": "object"
+        }
+      },
+      "required": [
+        "access_id",
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_gateway_allowed_access values",
+  "type": "object"
+}

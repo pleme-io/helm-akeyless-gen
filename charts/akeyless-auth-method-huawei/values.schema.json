@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "access_expires": {
+          "default": 0,
+          "description": "Access expiration date in Unix timestamp (select 0 for access without\nexpiry date)",
+          "type": "integer"
+        },
+        "allowed_client_type": {
+          "description": "limit the auth method usage for specific client types [cli,ui,gateway-admin,sdk,mobile,extension]",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "audit_logs_claims": {
+          "description": "Subclaims to include in audit logs, e.g \"--audit-logs-claims email --audit-logs-claims username\"",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "auth_url": {
+          "default": "https://iam.myhwclouds.com:443/v3",
+          "description": "sts URL",
+          "type": "string"
+        },
+        "bound_domain_id": {
+          "description": "A list of domain IDs that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_domain_name": {
+          "description": "A list of domain names that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_ips": {
+          "description": "A CIDR whitelist with the IPs that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_tenant_id": {
+          "description": "A list of full tenant ids that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_tenant_name": {
+          "description": "A list of full tenant names that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_user_id": {
+          "description": "A list of full user ids that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "bound_user_name": {
+          "description": "A list of full user-name that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "delete_protection": {
+          "description": "Protection from accidental deletion of this object [true/false]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Auth Method description",
+          "type": "string"
+        },
+        "expiration_event_in": {
+          "description": "How many days before the expiration of the auth method would you like to be notified.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "force_sub_claims": {
+          "description": "if true: enforce role-association must include sub claims",
+          "type": "boolean"
+        },
+        "gw_bound_ips": {
+          "description": "A CIDR whitelist with the GW IPs that the access is restricted to",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "jwt_ttl": {
+          "default": 0,
+          "description": "Jwt TTL",
+          "type": "integer"
+        },
+        "name": {
+          "description": "Auth Method name",
+          "type": "string"
+        },
+        "product_type": {
+          "description": "Choose the relevant product type for the auth method [sm, sra, pm, dp, ca]",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_auth_method_huawei values",
+  "type": "object"
+}

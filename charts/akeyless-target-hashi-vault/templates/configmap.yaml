@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-hashi-vault.fullname" . }}
+  labels:
+    {{- include "akeyless-target-hashi-vault.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  hashi-url: {{ .Values.config.hashi_url | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  namespace: {{ .Values.config.namespace | quote }}
+{{- end }}

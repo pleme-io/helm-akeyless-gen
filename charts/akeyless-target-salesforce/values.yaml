@@ -1,0 +1,35 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  app_private_key_data: ''
+  auth_flow: ''
+  ca_cert_data: ''
+  ca_cert_name: ''
+  client_id: ''
+  description: ''
+  email: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  tenant_url: ''
+secrets:
+  client_secret: ''
+  security_token: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

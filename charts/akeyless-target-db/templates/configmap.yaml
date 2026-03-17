@@ -1,0 +1,40 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-db.fullname" . }}
+  labels:
+    {{- include "akeyless-target-db.labels" . | nindent 4 }}
+data:
+  azure-client-id: {{ .Values.config.azure_client_id | quote }}
+  azure-client-secret: {{ .Values.config.azure_client_secret | quote }}
+  azure-tenant-id: {{ .Values.config.azure_tenant_id | quote }}
+  cloud-service-provider: {{ .Values.config.cloud_service_provider | quote }}
+  cluster-mode: {{ .Values.config.cluster_mode | quote }}
+  comment: {{ .Values.config.comment | quote }}
+  connection-type: {{ .Values.config.connection_type | quote }}
+  db-name: {{ .Values.config.db_name | quote }}
+  db-server-name: {{ .Values.config.db_server_name | quote }}
+  db-type: {{ .Values.config.db_type | quote }}
+  description: {{ .Values.config.description | quote }}
+  host: {{ .Values.config.host | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  mongodb-atlas: {{ .Values.config.mongodb_atlas | quote }}
+  mongodb-atlas-api-public-key: {{ .Values.config.mongodb_atlas_api_public_key | quote }}
+  mongodb-atlas-project-id: {{ .Values.config.mongodb_atlas_project_id | quote }}
+  mongodb-default-auth-db: {{ .Values.config.mongodb_default_auth_db | quote }}
+  mongodb-uri-options: {{ .Values.config.mongodb_uri_options | quote }}
+  name: {{ .Values.config.name | quote }}
+  oracle-service-name: {{ .Values.config.oracle_service_name | quote }}
+  oracle-wallet-login-type: {{ .Values.config.oracle_wallet_login_type | quote }}
+  oracle-wallet-p12-file-data: {{ .Values.config.oracle_wallet_p12_file_data | quote }}
+  oracle-wallet-sso-file-data: {{ .Values.config.oracle_wallet_sso_file_data | quote }}
+  parent-target-name: {{ .Values.config.parent_target_name | quote }}
+  port: {{ .Values.config.port | quote }}
+  snowflake-account: {{ .Values.config.snowflake_account | quote }}
+  snowflake-api-private-key: {{ .Values.config.snowflake_api_private_key | quote }}
+  snowflake-api-private-key-password: {{ .Values.config.snowflake_api_private_key_password | quote }}
+  ssl: {{ .Values.config.ssl | quote }}
+  user-name: {{ .Values.config.user_name | quote }}
+{{- end }}

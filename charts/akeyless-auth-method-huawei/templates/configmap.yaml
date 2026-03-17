@@ -1,0 +1,28 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-auth-method-huawei.fullname" . }}
+  labels:
+    {{- include "akeyless-auth-method-huawei.labels" . | nindent 4 }}
+data:
+  access-expires: {{ .Values.config.access_expires | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
+  auth-url: {{ .Values.config.auth_url | quote }}
+  bound-domain-id: {{ .Values.config.bound_domain_id | quote }}
+  bound-domain-name: {{ .Values.config.bound_domain_name | quote }}
+  bound-ips: {{ .Values.config.bound_ips | quote }}
+  bound-tenant-id: {{ .Values.config.bound_tenant_id | quote }}
+  bound-tenant-name: {{ .Values.config.bound_tenant_name | quote }}
+  bound-user-id: {{ .Values.config.bound_user_id | quote }}
+  bound-user-name: {{ .Values.config.bound_user_name | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
+  name: {{ .Values.config.name | quote }}
+  product-type: {{ .Values.config.product_type | quote }}
+{{- end }}

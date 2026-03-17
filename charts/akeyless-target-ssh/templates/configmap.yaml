@@ -1,0 +1,16 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-ssh.fullname" . }}
+  labels:
+    {{- include "akeyless-target-ssh.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  host: {{ .Values.config.host | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  port: {{ .Values.config.port | quote }}
+  ssh-username: {{ .Values.config.ssh_username | quote }}
+{{- end }}

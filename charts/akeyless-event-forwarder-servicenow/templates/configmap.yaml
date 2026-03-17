@@ -1,0 +1,27 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-event-forwarder-servicenow.fullname" . }}
+  labels:
+    {{- include "akeyless-event-forwarder-servicenow.labels" . | nindent 4 }}
+data:
+  admin-name: {{ .Values.config.admin_name | quote }}
+  admin-pwd: {{ .Values.config.admin_pwd | quote }}
+  app-private-key-base64: {{ .Values.config.app_private_key_base64 | quote }}
+  auth-methods-event-source-locations: {{ .Values.config.auth_methods_event_source_locations | quote }}
+  auth-type: {{ .Values.config.auth_type | quote }}
+  client-id: {{ .Values.config.client_id | quote }}
+  client-secret: {{ .Values.config.client_secret | quote }}
+  description: {{ .Values.config.description | quote }}
+  event-types: {{ .Values.config.event_types | quote }}
+  every: {{ .Values.config.every | quote }}
+  gateways-event-source-locations: {{ .Values.config.gateways_event_source_locations | quote }}
+  host: {{ .Values.config.host | quote }}
+  items-event-source-locations: {{ .Values.config.items_event_source_locations | quote }}
+  key: {{ .Values.config.key | quote }}
+  name: {{ .Values.config.name | quote }}
+  runner-type: {{ .Values.config.runner_type | quote }}
+  targets-event-source-locations: {{ .Values.config.targets_event_source_locations | quote }}
+  user-email: {{ .Values.config.user_email | quote }}
+{{- end }}

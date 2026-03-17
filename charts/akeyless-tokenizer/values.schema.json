@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "alphabet": {
+          "description": "Alphabet to use in regexp vaultless tokenization",
+          "type": "string"
+        },
+        "decoding_template": {
+          "description": "The Decoding output template to use in regexp vaultless tokenization",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Protection from accidental deletion of this object [true/false]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "encoding_template": {
+          "description": "The Encoding output template to use in regexp vaultless tokenization",
+          "type": "string"
+        },
+        "encryption_key_name": {
+          "description": "AES key name to use in vaultless tokenization",
+          "type": "string"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "name": {
+          "description": "Tokenizer name",
+          "type": "string"
+        },
+        "pattern": {
+          "description": "Pattern to use in regexp vaultless tokenization",
+          "type": "string"
+        },
+        "tag": {
+          "description": "List of the tags attached to this key",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "template_type": {
+          "description": "Which template type this tokenizer is used for [SSN,CreditCard,USPhoneNumber,Email,Regexp]",
+          "type": "string"
+        },
+        "tokenizer_type": {
+          "default": "vaultless",
+          "description": "Tokenizer type",
+          "type": "string"
+        },
+        "tweak_type": {
+          "description": "The tweak type to use in vaultless tokenization [Supplied, Generated, Internal, Masking]",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "template_type",
+        "tokenizer_type"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_tokenizer values",
+  "type": "object"
+}

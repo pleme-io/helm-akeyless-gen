@@ -1,0 +1,17 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-eks.fullname" . }}
+  labels:
+    {{- include "akeyless-target-eks.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  eks-cluster-endpoint: {{ .Values.config.eks_cluster_endpoint | quote }}
+  eks-cluster-name: {{ .Values.config.eks_cluster_name | quote }}
+  eks-region: {{ .Values.config.eks_region | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  use-gw-cloud-identity: {{ .Values.config.use_gw_cloud_identity | quote }}
+{{- end }}

@@ -1,0 +1,32 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  description: ''
+  host: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  port: ''
+  ssh_username: ''
+secrets:
+  private_key: ''
+  private_key_password: ''
+  ssh_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

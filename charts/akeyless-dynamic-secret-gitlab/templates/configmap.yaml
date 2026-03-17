@@ -1,0 +1,22 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-gitlab.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-gitlab.labels" . | nindent 4 }}
+data:
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  gitlab-access-type: {{ .Values.config.gitlab_access_type | quote }}
+  gitlab-role: {{ .Values.config.gitlab_role | quote }}
+  gitlab-token-scopes: {{ .Values.config.gitlab_token_scopes | quote }}
+  gitlab-url: {{ .Values.config.gitlab_url | quote }}
+  group-name: {{ .Values.config.group_name | quote }}
+  installation-organization: {{ .Values.config.installation_organization | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  ttl: {{ .Values.config.ttl | quote }}
+{{- end }}

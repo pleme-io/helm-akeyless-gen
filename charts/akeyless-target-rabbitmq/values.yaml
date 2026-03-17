@@ -1,0 +1,29 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  description: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  rabbitmq_server_uri: ''
+  rabbitmq_server_user: ''
+secrets:
+  rabbitmq_server_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

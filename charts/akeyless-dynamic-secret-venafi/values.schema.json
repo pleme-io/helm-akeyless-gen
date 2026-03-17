@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "admin_rotation_interval_days": {
+          "default": 0,
+          "description": "Admin credentials rotation interval (days)",
+          "type": "integer"
+        },
+        "allow_subdomains": {
+          "description": "Allow subdomains",
+          "type": "boolean"
+        },
+        "allowed_domains": {
+          "description": "Allowed domains",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "auto_generated_folder": {
+          "description": "Auto generated folder",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "enable_admin_rotation": {
+          "default": false,
+          "description": "Automatic admin credentials rotation",
+          "type": "boolean"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "name": {
+          "description": "Dynamic secret name",
+          "type": "string"
+        },
+        "producer_encryption_key_name": {
+          "description": "Dynamic producer encryption key",
+          "type": "string"
+        },
+        "root_first_in_chain": {
+          "description": "Root first in chain",
+          "type": "boolean"
+        },
+        "sign_using_akeyless_pki": {
+          "description": "Use Akeyless PKI issuer or Venafi issuer",
+          "type": "boolean"
+        },
+        "signer_key_name": {
+          "description": "Signer key name",
+          "type": "string"
+        },
+        "store_private_key": {
+          "description": "Store private key in Akeyless",
+          "type": "boolean"
+        },
+        "tags": {
+          "description": "Tags for the producer",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "target_name": {
+          "description": "Target name associated with this producer",
+          "type": "string"
+        },
+        "user_ttl": {
+          "default": "2160h",
+          "description": "User TTL (e.g., 60m, 12h)",
+          "type": "string"
+        },
+        "venafi_access_token": {
+          "description": "Venafi Access Token to use to access the TPP environment (Relevant when using TPP)",
+          "type": "string"
+        },
+        "venafi_baseurl": {
+          "description": "Venafi base URL",
+          "type": "string"
+        },
+        "venafi_client_id": {
+          "default": "akeyless",
+          "description": "Venafi Client ID that was used when the access token was generated",
+          "type": "string"
+        },
+        "venafi_refresh_token": {
+          "description": "Venafi Refresh Token to use when the Access Token is expired (Relevant when using TPP)",
+          "type": "string"
+        },
+        "venafi_use_tpp": {
+          "description": "Use Venafi TPP (instead of Cloud)",
+          "type": "boolean"
+        },
+        "venafi_zone": {
+          "description": "Venafi zone/policy folder",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "venafi_api_key": {
+          "description": "Venafi API key",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_dynamic_secret_venafi values",
+  "type": "object"
+}

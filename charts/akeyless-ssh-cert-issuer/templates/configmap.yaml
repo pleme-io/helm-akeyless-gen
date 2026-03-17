@@ -1,0 +1,24 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-ssh-cert-issuer.fullname" . }}
+  labels:
+    {{- include "akeyless-ssh-cert-issuer.labels" . | nindent 4 }}
+data:
+  ProviderType: {{ .Values.config.ProviderType | quote }}
+  allowed-users: {{ .Values.config.allowed_users | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  extensions: {{ .Values.config.extensions | quote }}
+  external-username: {{ .Values.config.external_username | quote }}
+  fixed-user-claim-keyname: {{ .Values.config.fixed_user_claim_keyname | quote }}
+  host-provider: {{ .Values.config.host_provider | quote }}
+  name: {{ .Values.config.name | quote }}
+  principals: {{ .Values.config.principals | quote }}
+  secure-access-use-internal-ssh-access: {{ .Values.config.secure_access_use_internal_ssh_access | quote }}
+  signer-key-name: {{ .Values.config.signer_key_name | quote }}
+  tag: {{ .Values.config.tag | quote }}
+  target: {{ .Values.config.target | quote }}
+  ttl: {{ .Values.config.ttl | quote }}
+{{- end }}

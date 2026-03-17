@@ -1,0 +1,44 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  ProviderType: ''
+  authentication_credentials: ''
+  auto_rotate: ''
+  delete_protection: false
+  description: ''
+  host_provider: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  password_length: ''
+  rotate_after_disconnect: ''
+  rotated_username: ''
+  rotation_event_in: []
+  rotation_hour: 0
+  rotation_interval: ''
+  rotator_type: ''
+  tags: []
+  target: []
+  target_name: ''
+  user_attribute: ''
+  user_dn: ''
+secrets:
+  rotated_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "auth_methods_event_source_locations": {
+          "description": "Auth Method Event sources",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "email_to": {
+          "description": "A comma seperated list of email addresses to send event to",
+          "type": "string"
+        },
+        "event_types": {
+          "description": "List of event types to notify about [request-access, certificate-pending-expiration, certificate-expired, certificate-provisioning-success, certificate-provisioning-failure, auth-method-pending-expiration, auth-method-expired, next-automatic-rotation, rotated-secret-success, rotated-secret-failure, dynamic-secret-failure, multi-auth-failure, uid-rotation-failure, apply-justification, email-auth-method-approved, usage, rotation-usage, gateway-inactive, static-secret-updated, rate-limiting, usage-report, secret-sync]",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "every": {
+          "description": "Rate of periodic runner repetition in hours",
+          "type": "string"
+        },
+        "gateways_event_source_locations": {
+          "description": "Event sources",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "include_error": {
+          "description": "Set this option to include event errors details [true/false]",
+          "type": "string"
+        },
+        "items_event_source_locations": {
+          "description": "Items Event sources",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "key": {
+          "description": "The name of a key that used to encrypt the EventForwarder secret value (if empty, the account default protectionKey key will be used)",
+          "type": "string"
+        },
+        "name": {
+          "description": "EventForwarder name",
+          "type": "string"
+        },
+        "override_url": {
+          "description": "Override Akeyless default URL with your Gateway url (port 18888)",
+          "type": "string"
+        },
+        "runner_type": {
+          "type": "string"
+        },
+        "targets_event_source_locations": {
+          "description": "Targets Event sources",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "gateways_event_source_locations",
+        "name",
+        "runner_type"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_event_forwarder_email values",
+  "type": "object"
+}

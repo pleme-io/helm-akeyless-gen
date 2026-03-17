@@ -1,0 +1,38 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  access_expires: 0
+  allowed_client_type: []
+  allowed_redirect_uri: []
+  audit_logs_claims: []
+  bound_ips: []
+  delete_protection: false
+  description: ''
+  expiration_event_in: []
+  force_sub_claims: false
+  gw_bound_ips: []
+  idp_metadata_url: ''
+  idp_metadata_xml_data: ''
+  jwt_ttl: 0
+  name: ''
+  product_type: []
+  subclaims_delimiters: []
+  unique_identifier: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

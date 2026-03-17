@@ -1,0 +1,32 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-aws.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-aws.labels" . | nindent 4 }}
+data:
+  access-mode: {{ .Values.config.access_mode | quote }}
+  admin-rotation-interval-days: {{ .Values.config.admin_rotation_interval_days | quote }}
+  aws-external-id: {{ .Values.config.aws_external_id | quote }}
+  aws-role-arns: {{ .Values.config.aws_role_arns | quote }}
+  aws-user-console-access: {{ .Values.config.aws_user_console_access | quote }}
+  aws-user-groups: {{ .Values.config.aws_user_groups | quote }}
+  aws-user-policies: {{ .Values.config.aws_user_policies | quote }}
+  aws-user-programmatic-access: {{ .Values.config.aws_user_programmatic_access | quote }}
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  enable-admin-rotation: {{ .Values.config.enable_admin_rotation | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
+  region: {{ .Values.config.region | quote }}
+  secure-access-delay: {{ .Values.config.secure_access_delay | quote }}
+  session-tags: {{ .Values.config.session_tags | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  transitive-tag-keys: {{ .Values.config.transitive_tag_keys | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

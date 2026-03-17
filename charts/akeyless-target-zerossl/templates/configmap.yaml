@@ -1,0 +1,18 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-zerossl.fullname" . }}
+  labels:
+    {{- include "akeyless-target-zerossl.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  imap-fqdn: {{ .Values.config.imap_fqdn | quote }}
+  imap-port: {{ .Values.config.imap_port | quote }}
+  imap-target-email: {{ .Values.config.imap_target_email | quote }}
+  imap-username: {{ .Values.config.imap_username | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  timeout: {{ .Values.config.timeout | quote }}
+{{- end }}

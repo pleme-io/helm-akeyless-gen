@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "admin_rotation_interval_days": {
+          "description": "Admin credentials rotation interval in days",
+          "type": "integer"
+        },
+        "create_sync_url": {
+          "description": "URL to call on create/sync",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "enable_admin_rotation": {
+          "default": false,
+          "description": "Enable admin credentials rotation",
+          "type": "boolean"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "name": {
+          "description": "Dynamic secret name",
+          "type": "string"
+        },
+        "payload": {
+          "description": "Custom payload to send to the URL",
+          "type": "string"
+        },
+        "producer_encryption_key_name": {
+          "description": "Dynamic producer encryption key",
+          "type": "string"
+        },
+        "revoke_sync_url": {
+          "description": "URL to call on revoke",
+          "type": "string"
+        },
+        "rotate_sync_url": {
+          "description": "URL to call on rotate",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for the producer",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "timeout_sec": {
+          "default": 60,
+          "description": "Timeout in seconds for custom calls",
+          "type": "integer"
+        },
+        "user_ttl": {
+          "default": "60m",
+          "description": "User TTL (e.g., 60m, 12h)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "create_sync_url",
+        "name",
+        "revoke_sync_url"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_dynamic_secret_custom values",
+  "type": "object"
+}

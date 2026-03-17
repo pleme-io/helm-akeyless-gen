@@ -1,0 +1,44 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  audience: ''
+  authentication_credentials: ''
+  auto_rotate: ''
+  delete_protection: false
+  description: ''
+  expiration_date: ''
+  hec_token: ''
+  hec_token_name: ''
+  key: ''
+  max_versions: ''
+  name: ''
+  password_length: ''
+  rotated_username: ''
+  rotation_event_in: []
+  rotation_hour: 0
+  rotation_interval: ''
+  rotator_type: ''
+  splunk_token: ''
+  tags: []
+  target_name: ''
+  token_owner: ''
+secrets:
+  rotated_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,39 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  cassandra_creation_statements: ''
+  cassandra_hosts: ''
+  cassandra_port: ''
+  cassandra_username: ''
+  custom_username_template: ''
+  delete_protection: false
+  description: ''
+  item_custom_fields: {}
+  name: ''
+  password_length: ''
+  producer_encryption_key_name: ''
+  ssl: false
+  tags: []
+  target_name: ''
+  user_ttl: ''
+secrets:
+  cassandra_password: ''
+  ssl_certificate: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,14 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-linked.fullname" . }}
+  labels:
+    {{- include "akeyless-target-linked.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  hosts: {{ .Values.config.hosts | quote }}
+  name: {{ .Values.config.name | quote }}
+  parent-target-name: {{ .Values.config.parent_target_name | quote }}
+  type: {{ .Values.config.type | quote }}
+{{- end }}

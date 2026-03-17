@@ -1,0 +1,41 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  custom_username_template: ''
+  delete_protection: false
+  description: ''
+  item_custom_fields: {}
+  mssql_allowed_db_names: ''
+  mssql_create_statements: ''
+  mssql_dbname: ''
+  mssql_host: ''
+  mssql_port: ''
+  mssql_revocation_statements: ''
+  mssql_username: ''
+  name: ''
+  password_length: ''
+  producer_encryption_key_name: ''
+  secure_access_delay: 0
+  tags: []
+  target_name: ''
+  user_ttl: ''
+secrets:
+  mssql_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

@@ -1,0 +1,37 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  delete_protection: false
+  description: ''
+  gitlab_access_type: ''
+  gitlab_role: ''
+  gitlab_token_scopes: ''
+  gitlab_url: ''
+  group_name: ''
+  installation_organization: ''
+  item_custom_fields: {}
+  name: ''
+  tags: []
+  target_name: ''
+  ttl: ''
+secrets:
+  gitlab_access_token: ''
+  gitlab_certificate: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

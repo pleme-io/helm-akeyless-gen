@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-esm.fullname" . }}
+  labels:
+    {{- include "akeyless-esm.labels" . | nindent 4 }}
+data:
+  binary-value: {{ .Values.config.binary_value | quote }}
+  description: {{ .Values.config.description | quote }}
+  esm-name: {{ .Values.config.esm_name | quote }}
+  secret-name: {{ .Values.config.secret_name | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  value: {{ .Values.config.value | quote }}
+{{- end }}

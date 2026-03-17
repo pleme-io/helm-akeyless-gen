@@ -1,0 +1,35 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  admin_rotation_interval_days: 0
+  create_sync_url: ''
+  delete_protection: false
+  description: ''
+  enable_admin_rotation: false
+  item_custom_fields: {}
+  name: ''
+  payload: ''
+  producer_encryption_key_name: ''
+  revoke_sync_url: ''
+  rotate_sync_url: ''
+  tags: []
+  timeout_sec: 0
+  user_ttl: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

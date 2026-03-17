@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "access_id": {
+          "description": "The access ID of the Kubernetes auth method",
+          "type": "string"
+        },
+        "cluster_api_type": {
+          "default": "native_k8s",
+          "description": "Cluster access type. options: [native_k8s, rancher]",
+          "type": "string"
+        },
+        "disable_issuer_validation": {
+          "description": "Disable issuer validation [true/false]",
+          "type": "string"
+        },
+        "k8s_auth_type": {
+          "default": "token",
+          "description": "K8S auth type [token/certificate]. (relevant for \"native_k8s\" only)",
+          "type": "string"
+        },
+        "k8s_ca_cert": {
+          "description": "The CA Certificate (base64 encoded) to use to call into the kubernetes API server",
+          "type": "string"
+        },
+        "k8s_client_certificate": {
+          "description": "Content of the k8 client certificate (PEM format) in a Base64 format (relevant for \"native_k8s\" only)",
+          "type": "string"
+        },
+        "k8s_client_key": {
+          "description": "Content of the k8 client private key (PEM format) in a Base64 format (relevant for \"native_k8s\" only)",
+          "type": "string"
+        },
+        "k8s_host": {
+          "description": "The URL of the kubernetes API server",
+          "type": "string"
+        },
+        "k8s_issuer": {
+          "default": "kubernetes/serviceaccount",
+          "description": "The Kubernetes JWT issuer name. K8SIssuer is the claim that specifies who issued the Kubernetes token",
+          "type": "string"
+        },
+        "name": {
+          "description": "K8S Auth config name",
+          "type": "string"
+        },
+        "rancher_api_key": {
+          "description": "The api key used to access the TokenReview API to validate other JWTs (relevant for \"rancher\" only)",
+          "type": "string"
+        },
+        "rancher_cluster_id": {
+          "description": "The cluster id as define in rancher (relevant for \"rancher\" only)",
+          "type": "string"
+        },
+        "signing_key": {
+          "description": "The private key (base64 encoded) associated with the public key defined in the Kubernetes auth",
+          "type": "string"
+        },
+        "token_exp": {
+          "default": 300,
+          "description": "Time in seconds of expiration of the Akeyless Kube Auth Method token",
+          "type": "integer"
+        },
+        "token_reviewer_jwt": {
+          "description": "A Kubernetes service account JWT used to access the TokenReview API to validate other JWTs (relevant for \"native_k8s\" only).\nIf not set, the JWT submitted in the authentication process will be used to access the Kubernetes TokenReview API.",
+          "type": "string"
+        },
+        "use_gw_service_account": {
+          "description": "Use the GW's service account",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "access_id",
+        "k8s_host",
+        "name",
+        "signing_key"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_gateway_k8s_auth_config values",
+  "type": "object"
+}

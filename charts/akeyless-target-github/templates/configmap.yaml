@@ -1,0 +1,15 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-github.fullname" . }}
+  labels:
+    {{- include "akeyless-target-github.labels" . | nindent 4 }}
+data:
+  description: {{ .Values.config.description | quote }}
+  github-app-id: {{ .Values.config.github_app_id | quote }}
+  github-base-url: {{ .Values.config.github_base_url | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+{{- end }}

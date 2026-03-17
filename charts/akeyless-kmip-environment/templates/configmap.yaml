@@ -1,0 +1,12 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-kmip-environment.fullname" . }}
+  labels:
+    {{- include "akeyless-kmip-environment.labels" . | nindent 4 }}
+data:
+  certificate-ttl: {{ .Values.config.certificate_ttl | quote }}
+  hostname: {{ .Values.config.hostname | quote }}
+  root: {{ .Values.config.root | quote }}
+{{- end }}

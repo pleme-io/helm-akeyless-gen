@@ -1,0 +1,26 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-oracle.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-oracle.labels" . | nindent 4 }}
+data:
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  db-server-name: {{ .Values.config.db_server_name | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  oracle-host: {{ .Values.config.oracle_host | quote }}
+  oracle-port: {{ .Values.config.oracle_port | quote }}
+  oracle-revocation-statements: {{ .Values.config.oracle_revocation_statements | quote }}
+  oracle-screation-statements: {{ .Values.config.oracle_screation_statements | quote }}
+  oracle-service-name: {{ .Values.config.oracle_service_name | quote }}
+  oracle-username: {{ .Values.config.oracle_username | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

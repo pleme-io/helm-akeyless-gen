@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "audience": {
+          "description": "Token audience for Splunk token creation (required for rotator-type=token)",
+          "type": "string"
+        },
+        "authentication_credentials": {
+          "default": "use-user-creds",
+          "description": "Credentials to connect with: use-user-creds or use-target-creds",
+          "type": "string"
+        },
+        "auto_rotate": {
+          "description": "Whether to automatically rotate every rotation-interval days [true/false]",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "expiration_date": {
+          "description": "Token expiration date in YYYY-MM-DD format (required for rotator-type=token when manual rotation is selected and no existing token is provided). Time will be set to 00:00 UTC.",
+          "type": "string"
+        },
+        "hec_token": {
+          "description": "Current Splunk HEC token value to store (relevant only for rotator-type=hec-token). If not provided, a new HEC input will be created in Splunk.",
+          "type": "string"
+        },
+        "hec_token_name": {
+          "description": "Splunk HEC input name to manage  (required for rotator-type=hec-token)",
+          "type": "string"
+        },
+        "key": {
+          "description": "Encryption key name for the secret value",
+          "type": "string"
+        },
+        "max_versions": {
+          "description": "Maximum number of versions",
+          "type": "string"
+        },
+        "name": {
+          "description": "Rotated secret name",
+          "type": "string"
+        },
+        "password_length": {
+          "description": "Length of the password to be generated",
+          "type": "string"
+        },
+        "rotated_username": {
+          "description": "Username to be rotated",
+          "type": "string"
+        },
+        "rotation_event_in": {
+          "description": "How many days before the rotation of the item would you like to be notified",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rotation_hour": {
+          "description": "The hour of the rotation in UTC",
+          "type": "integer"
+        },
+        "rotation_interval": {
+          "description": "Days between every automatic key rotation (1-365)",
+          "type": "string"
+        },
+        "rotator_type": {
+          "description": "The rotator type: target or password",
+          "type": "string"
+        },
+        "splunk_token": {
+          "description": "Current Splunk authentication token to store (relevant only for rotator-type=token). If not provided, a new token will be created in Splunk.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for the rotated secret",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "target_name": {
+          "description": "Target name to associate",
+          "type": "string"
+        },
+        "token_owner": {
+          "description": "Splunk token owner username (relevant only for rotator-type=token)",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "rotator_type",
+        "target_name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "secrets": {
+      "properties": {
+        "rotated_password": {
+          "description": "Rotated-username password (relevant only for rotator-type=password)",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_rotated_secret_splunk values",
+  "type": "object"
+}

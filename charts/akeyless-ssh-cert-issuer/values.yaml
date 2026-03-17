@@ -1,0 +1,36 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  ProviderType: ''
+  allowed_users: ''
+  delete_protection: false
+  description: ''
+  extensions: {}
+  external_username: ''
+  fixed_user_claim_keyname: ''
+  host_provider: ''
+  name: ''
+  principals: ''
+  secure_access_use_internal_ssh_access: false
+  signer_key_name: ''
+  tag: []
+  target: []
+  ttl: 0
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

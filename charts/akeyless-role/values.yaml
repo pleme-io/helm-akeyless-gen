@@ -1,0 +1,34 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  analytics_access: ''
+  audit_access: ''
+  comment: ''
+  delete_protection: ''
+  description: ''
+  event_center_access: ''
+  event_forwarders_access: ''
+  event_forwarders_name: []
+  gw_analytics_access: ''
+  name: ''
+  reverse_rbac_access: ''
+  sra_reports_access: ''
+  usage_reports_access: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

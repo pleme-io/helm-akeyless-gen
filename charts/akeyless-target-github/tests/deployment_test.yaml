@@ -1,0 +1,28 @@
+suite: akeyless-target-github deployment tests
+templates:
+  - templates/deployment.yaml
+values:
+  - ../values.yaml
+tests:
+  - it: should render a Deployment
+    asserts:
+      - isKind:
+          of: Deployment
+
+  - it: should set correct labels
+    asserts:
+      - isSubset:
+          path: metadata.labels
+          content:
+            app.kubernetes.io/managed-by: Helm
+
+  - it: should enforce security context
+    asserts:
+      - equal:
+          path: spec.template.spec.securityContext.runAsNonRoot
+          value: true
+
+  - it: should set resource requests
+    asserts:
+      - isNotEmpty:
+          path: spec.template.spec.containers[0].resources.requests

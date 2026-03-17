@@ -1,0 +1,20 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-usc.fullname" . }}
+  labels:
+    {{- include "akeyless-usc.labels" . | nindent 4 }}
+data:
+  binary-value: {{ .Values.config.binary_value | quote }}
+  description: {{ .Values.config.description | quote }}
+  namespace: {{ .Values.config.namespace | quote }}
+  object-type: {{ .Values.config.object_type | quote }}
+  pfx-password: {{ .Values.config.pfx_password | quote }}
+  region: {{ .Values.config.region | quote }}
+  secret-name: {{ .Values.config.secret_name | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  usc-encryption-key: {{ .Values.config.usc_encryption_key | quote }}
+  usc-name: {{ .Values.config.usc_name | quote }}
+  value: {{ .Values.config.value | quote }}
+{{- end }}

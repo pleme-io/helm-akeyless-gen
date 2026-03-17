@@ -1,0 +1,43 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  access_expires: 0
+  allowed_client_type: []
+  audience: ''
+  audit_logs_claims: []
+  bound_ips: []
+  bound_labels: []
+  bound_projects: []
+  bound_regions: []
+  bound_service_accounts: []
+  bound_zones: []
+  delete_protection: false
+  description: ''
+  expiration_event_in: []
+  force_sub_claims: false
+  gw_bound_ips: []
+  jwt_ttl: 0
+  name: ''
+  product_type: []
+  type: ''
+  unique_identifier: ''
+secrets:
+  service_account_creds_data: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

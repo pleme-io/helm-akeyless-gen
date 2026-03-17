@@ -1,0 +1,52 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-pki-cert-issuer.fullname" . }}
+  labels:
+    {{- include "akeyless-pki-cert-issuer.labels" . | nindent 4 }}
+data:
+  allow-any-name: {{ .Values.config.allow_any_name | quote }}
+  allow-copy-ext-from-csr: {{ .Values.config.allow_copy_ext_from_csr | quote }}
+  allow-subdomains: {{ .Values.config.allow_subdomains | quote }}
+  allowed-domains: {{ .Values.config.allowed_domains | quote }}
+  allowed-extra-extensions: {{ .Values.config.allowed_extra_extensions | quote }}
+  allowed-ip-sans: {{ .Values.config.allowed_ip_sans | quote }}
+  allowed-uri-sans: {{ .Values.config.allowed_uri_sans | quote }}
+  auto-renew: {{ .Values.config.auto_renew | quote }}
+  ca-target: {{ .Values.config.ca_target | quote }}
+  client-flag: {{ .Values.config.client_flag | quote }}
+  code-signing-flag: {{ .Values.config.code_signing_flag | quote }}
+  country: {{ .Values.config.country | quote }}
+  create-private-crl: {{ .Values.config.create_private_crl | quote }}
+  create-private-ocsp: {{ .Values.config.create_private_ocsp | quote }}
+  create-public-crl: {{ .Values.config.create_public_crl | quote }}
+  create-public-ocsp: {{ .Values.config.create_public_ocsp | quote }}
+  critical-key-usage: {{ .Values.config.critical_key_usage | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  destination-path: {{ .Values.config.destination_path | quote }}
+  disable-wildcards: {{ .Values.config.disable_wildcards | quote }}
+  enable-acme: {{ .Values.config.enable_acme | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  gw-cluster-url: {{ .Values.config.gw_cluster_url | quote }}
+  is-ca: {{ .Values.config.is_ca | quote }}
+  key-usage: {{ .Values.config.key_usage | quote }}
+  locality: {{ .Values.config.locality | quote }}
+  max-path-len: {{ .Values.config.max_path_len | quote }}
+  name: {{ .Values.config.name | quote }}
+  not-enforce-hostnames: {{ .Values.config.not_enforce_hostnames | quote }}
+  not-require-cn: {{ .Values.config.not_require_cn | quote }}
+  ocsp-ttl: {{ .Values.config.ocsp_ttl | quote }}
+  organizational-units: {{ .Values.config.organizational_units | quote }}
+  organizations: {{ .Values.config.organizations | quote }}
+  postal-code: {{ .Values.config.postal_code | quote }}
+  protect-certificates: {{ .Values.config.protect_certificates | quote }}
+  province: {{ .Values.config.province | quote }}
+  scheduled-renew: {{ .Values.config.scheduled_renew | quote }}
+  server-flag: {{ .Values.config.server_flag | quote }}
+  signer-key-name: {{ .Values.config.signer_key_name | quote }}
+  street-address: {{ .Values.config.street_address | quote }}
+  tag: {{ .Values.config.tag | quote }}
+  ttl: {{ .Values.config.ttl | quote }}
+{{- end }}

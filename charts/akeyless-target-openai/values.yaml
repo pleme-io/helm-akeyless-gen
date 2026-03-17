@@ -1,0 +1,30 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  api_key: ''
+  api_key_id: ''
+  description: ''
+  key: ''
+  max_versions: ''
+  model: ''
+  name: ''
+  openai_url: ''
+  organization_id: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

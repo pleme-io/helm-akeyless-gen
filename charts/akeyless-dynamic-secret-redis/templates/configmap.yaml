@@ -1,0 +1,23 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-dynamic-secret-redis.fullname" . }}
+  labels:
+    {{- include "akeyless-dynamic-secret-redis.labels" . | nindent 4 }}
+data:
+  acl-rules: {{ .Values.config.acl_rules | quote }}
+  custom-username-template: {{ .Values.config.custom_username_template | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  host: {{ .Values.config.host | quote }}
+  item-custom-fields: {{ .Values.config.item_custom_fields | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  port: {{ .Values.config.port | quote }}
+  producer-encryption-key-name: {{ .Values.config.producer_encryption_key_name | quote }}
+  ssl: {{ .Values.config.ssl | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+  user-ttl: {{ .Values.config.user_ttl | quote }}
+{{- end }}

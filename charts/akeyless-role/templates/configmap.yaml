@@ -1,0 +1,22 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-role.fullname" . }}
+  labels:
+    {{- include "akeyless-role.labels" . | nindent 4 }}
+data:
+  analytics-access: {{ .Values.config.analytics_access | quote }}
+  audit-access: {{ .Values.config.audit_access | quote }}
+  comment: {{ .Values.config.comment | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  event-center-access: {{ .Values.config.event_center_access | quote }}
+  event-forwarders-access: {{ .Values.config.event_forwarders_access | quote }}
+  event-forwarders-name: {{ .Values.config.event_forwarders_name | quote }}
+  gw-analytics-access: {{ .Values.config.gw_analytics_access | quote }}
+  name: {{ .Values.config.name | quote }}
+  reverse-rbac-access: {{ .Values.config.reverse_rbac_access | quote }}
+  sra-reports-access: {{ .Values.config.sra_reports_access | quote }}
+  usage-reports-access: {{ .Values.config.usage_reports_access | quote }}
+{{- end }}

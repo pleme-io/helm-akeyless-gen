@@ -1,0 +1,18 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-ldap.fullname" . }}
+  labels:
+    {{- include "akeyless-target-ldap.labels" . | nindent 4 }}
+data:
+  bind-dn: {{ .Values.config.bind_dn | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  ldap-ca-cert: {{ .Values.config.ldap_ca_cert | quote }}
+  ldap-url: {{ .Values.config.ldap_url | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  server-type: {{ .Values.config.server_type | quote }}
+  token-expiration: {{ .Values.config.token_expiration | quote }}
+{{- end }}

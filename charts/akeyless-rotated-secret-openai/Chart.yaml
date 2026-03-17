@@ -1,0 +1,14 @@
+apiVersion: v2
+name: akeyless-rotated-secret-openai
+description: Manages an OpenAI rotated secret
+type: application
+version: 0.1.0
+appVersion: 1.0.0
+dependencies:
+- name: pleme-lib
+  version: ~0.4.0
+  repository: file://../pleme-lib
+annotations:
+  pleme.io/category: rotated_secret
+  pleme.io/generated: 'true'
+  pleme.io/provider: akeyless

@@ -1,0 +1,16 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-gateway-allowed-access.fullname" . }}
+  labels:
+    {{- include "akeyless-gateway-allowed-access.labels" . | nindent 4 }}
+data:
+  SubClaimsCaseInsensitive: {{ .Values.config.SubClaimsCaseInsensitive | quote }}
+  access-id: {{ .Values.config.access_id | quote }}
+  case-sensitive: {{ .Values.config.case_sensitive | quote }}
+  description: {{ .Values.config.description | quote }}
+  name: {{ .Values.config.name | quote }}
+  permissions: {{ .Values.config.permissions | quote }}
+  sub-claims: {{ .Values.config.sub_claims | quote }}
+{{- end }}

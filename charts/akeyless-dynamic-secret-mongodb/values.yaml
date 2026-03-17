@@ -1,0 +1,46 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  custom_username_template: ''
+  delete_protection: false
+  description: ''
+  item_custom_fields: {}
+  mongodb_atlas_api_public_key: ''
+  mongodb_atlas_project_id: ''
+  mongodb_custom_data: ''
+  mongodb_default_auth_db: ''
+  mongodb_host_port: ''
+  mongodb_name: ''
+  mongodb_roles: ''
+  mongodb_scopes: ''
+  mongodb_server_uri: ''
+  mongodb_uri_options: ''
+  mongodb_username: ''
+  name: ''
+  password_length: ''
+  producer_encryption_key_name: ''
+  secure_access_delay: 0
+  tags: []
+  target_name: ''
+  user_ttl: ''
+secrets:
+  mongodb_atlas_api_private_key: ''
+  mongodb_password: ''
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

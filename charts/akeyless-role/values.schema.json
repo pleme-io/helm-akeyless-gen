@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "analytics_access": {
+          "description": "Allow this role to view analytics",
+          "type": "string"
+        },
+        "audit_access": {
+          "description": "Allow this role to view audit logs",
+          "type": "string"
+        },
+        "comment": {
+          "description": "Deprecated - use description",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Protection from accidental deletion of this object [true/false]",
+          "type": "string"
+        },
+        "description": {
+          "description": "Role description",
+          "type": "string"
+        },
+        "event_center_access": {
+          "description": "Allow this role to view Event Center. Currently only 'none', 'scoped' and 'all'\nvalues are supported",
+          "type": "string"
+        },
+        "event_forwarders_access": {
+          "description": "Allow this role to manage Event Forwarders. Currently only 'none' and 'all' values are supported.",
+          "type": "string"
+        },
+        "event_forwarders_name": {
+          "description": "Allow this role to manage the following Event Forwarders.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gw_analytics_access": {
+          "description": "Allow this role to view gateway analytics",
+          "type": "string"
+        },
+        "name": {
+          "description": "Role name",
+          "type": "string"
+        },
+        "reverse_rbac_access": {
+          "description": "Allow this role to view Reverse RBAC. Supported values: 'scoped', 'all'.",
+          "type": "string"
+        },
+        "sra_reports_access": {
+          "description": "Allow this role to view SRA reports",
+          "type": "string"
+        },
+        "usage_reports_access": {
+          "description": "Allow this role to view Usage Report. Currently only 'none' and\n'all' values are supported.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_role values",
+  "type": "object"
+}

@@ -1,0 +1,29 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-auth-method-oidc.fullname" . }}
+  labels:
+    {{- include "akeyless-auth-method-oidc.labels" . | nindent 4 }}
+data:
+  access-expires: {{ .Values.config.access_expires | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
+  allowed-redirect-uri: {{ .Values.config.allowed_redirect_uri | quote }}
+  audience: {{ .Values.config.audience | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
+  bound-ips: {{ .Values.config.bound_ips | quote }}
+  client-id: {{ .Values.config.client_id | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  issuer: {{ .Values.config.issuer | quote }}
+  jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
+  name: {{ .Values.config.name | quote }}
+  product-type: {{ .Values.config.product_type | quote }}
+  required-scopes: {{ .Values.config.required_scopes | quote }}
+  required-scopes-prefix: {{ .Values.config.required_scopes_prefix | quote }}
+  subclaims-delimiters: {{ .Values.config.subclaims_delimiters | quote }}
+  unique-identifier: {{ .Values.config.unique_identifier | quote }}
+{{- end }}

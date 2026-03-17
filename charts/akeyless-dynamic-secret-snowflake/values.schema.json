@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "autoscaling": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "config": {
+      "properties": {
+        "account": {
+          "description": "Account name",
+          "type": "string"
+        },
+        "account_password": {
+          "description": "Database Password",
+          "type": "string"
+        },
+        "account_username": {
+          "description": "Database Username",
+          "type": "string"
+        },
+        "auth_mode": {
+          "default": "password",
+          "description": "The authentication mode for the temporary user [password/key]",
+          "type": "string"
+        },
+        "custom_username_template": {
+          "description": "Customize how temporary usernames are generated using go template",
+          "type": "string"
+        },
+        "db_name": {
+          "description": "Database name",
+          "type": "string"
+        },
+        "delete_protection": {
+          "description": "Enable delete protection",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Description of the object",
+          "type": "string"
+        },
+        "item_custom_fields": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Additional custom fields to associate with the item",
+          "type": "object"
+        },
+        "key_algo": {
+          "type": "string"
+        },
+        "name": {
+          "description": "Dynamic secret name",
+          "type": "string"
+        },
+        "password_length": {
+          "description": "The length of the password to be generated",
+          "type": "string"
+        },
+        "private_key": {
+          "description": "RSA Private key (base64 encoded)",
+          "type": "string"
+        },
+        "private_key_passphrase": {
+          "description": "The Private key passphrase",
+          "type": "string"
+        },
+        "role": {
+          "description": "User role",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags for the producer",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "target_name": {
+          "description": "Target name associated with this producer",
+          "type": "string"
+        },
+        "user_ttl": {
+          "default": "24h",
+          "description": "User TTL (e.g., 60m, 12h)",
+          "type": "string"
+        },
+        "warehouse": {
+          "description": "Warehouse name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "image": {
+      "properties": {
+        "pullPolicy": {
+          "enum": [
+            "Always",
+            "IfNotPresent",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "monitoring": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "networkPolicy": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "pdb": {
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "replicaCount": {
+      "default": 1,
+      "type": "integer"
+    },
+    "resources": {
+      "properties": {
+        "limits": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "requests": {
+          "properties": {
+            "cpu": {
+              "type": "string"
+            },
+            "memory": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "akeyless_dynamic_secret_snowflake values",
+  "type": "object"
+}

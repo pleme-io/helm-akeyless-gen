@@ -1,0 +1,24 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-auth-method-email.fullname" . }}
+  labels:
+    {{- include "akeyless-auth-method-email.labels" . | nindent 4 }}
+data:
+  access-expires: {{ .Values.config.access_expires | quote }}
+  allowed-client-type: {{ .Values.config.allowed_client_type | quote }}
+  audit-logs-claims: {{ .Values.config.audit_logs_claims | quote }}
+  bound-ips: {{ .Values.config.bound_ips | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  email: {{ .Values.config.email | quote }}
+  enable-mfa: {{ .Values.config.enable_mfa | quote }}
+  expiration-event-in: {{ .Values.config.expiration_event_in | quote }}
+  force-sub-claims: {{ .Values.config.force_sub_claims | quote }}
+  gw-bound-ips: {{ .Values.config.gw_bound_ips | quote }}
+  jwt-ttl: {{ .Values.config.jwt_ttl | quote }}
+  mfa-type: {{ .Values.config.mfa_type | quote }}
+  name: {{ .Values.config.name | quote }}
+  product-type: {{ .Values.config.product_type | quote }}
+{{- end }}

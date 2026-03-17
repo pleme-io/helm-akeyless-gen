@@ -1,0 +1,17 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-ping.fullname" . }}
+  labels:
+    {{- include "akeyless-target-ping.labels" . | nindent 4 }}
+data:
+  administrative-port: {{ .Values.config.administrative_port | quote }}
+  authorization-port: {{ .Values.config.authorization_port | quote }}
+  description: {{ .Values.config.description | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  ping-url: {{ .Values.config.ping_url | quote }}
+  privileged-user: {{ .Values.config.privileged_user | quote }}
+{{- end }}

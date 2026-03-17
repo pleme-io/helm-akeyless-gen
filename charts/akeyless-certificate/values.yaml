@@ -1,0 +1,31 @@
+image:
+  repository: ''
+  tag: latest
+  pullPolicy: Always
+replicaCount: 1
+config:
+  certificate_data: ''
+  delete_protection: ''
+  description: ''
+  expiration_event_in: []
+  format: ''
+  item_custom_fields: {}
+  key: ''
+  key_data: ''
+  name: ''
+  tags: []
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+monitoring:
+  enabled: true
+networkPolicy:
+  enabled: true
+pdb:
+  enabled: false
+autoscaling:
+  enabled: false

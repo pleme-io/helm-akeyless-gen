@@ -1,0 +1,14 @@
+apiVersion: v2
+name: akeyless-target-github
+description: Manages a GitHub target in Akeyless Vault
+type: application
+version: 0.1.0
+appVersion: 1.0.0
+dependencies:
+- name: pleme-lib
+  version: ~0.4.0
+  repository: file://../pleme-lib
+annotations:
+  pleme.io/category: target
+  pleme.io/generated: 'true'
+  pleme.io/provider: akeyless

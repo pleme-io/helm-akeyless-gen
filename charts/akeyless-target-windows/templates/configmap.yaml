@@ -1,0 +1,19 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-target-windows.fullname" . }}
+  labels:
+    {{- include "akeyless-target-windows.labels" . | nindent 4 }}
+data:
+  connection-type: {{ .Values.config.connection_type | quote }}
+  description: {{ .Values.config.description | quote }}
+  domain: {{ .Values.config.domain | quote }}
+  hostname: {{ .Values.config.hostname | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  parent-target-name: {{ .Values.config.parent_target_name | quote }}
+  port: {{ .Values.config.port | quote }}
+  use-tls: {{ .Values.config.use_tls | quote }}
+{{- end }}

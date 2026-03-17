@@ -1,0 +1,34 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "akeyless-rotated-secret-azure.fullname" . }}
+  labels:
+    {{- include "akeyless-rotated-secret-azure.labels" . | nindent 4 }}
+data:
+  api-id: {{ .Values.config.api_id | quote }}
+  application-id: {{ .Values.config.application_id | quote }}
+  authentication-credentials: {{ .Values.config.authentication_credentials | quote }}
+  auto-rotate: {{ .Values.config.auto_rotate | quote }}
+  delete-protection: {{ .Values.config.delete_protection | quote }}
+  description: {{ .Values.config.description | quote }}
+  explicitly-set-sa: {{ .Values.config.explicitly_set_sa | quote }}
+  grace-rotation: {{ .Values.config.grace_rotation | quote }}
+  grace-rotation-hour: {{ .Values.config.grace_rotation_hour | quote }}
+  grace-rotation-interval: {{ .Values.config.grace_rotation_interval | quote }}
+  grace-rotation-timing: {{ .Values.config.grace_rotation_timing | quote }}
+  key: {{ .Values.config.key | quote }}
+  max-versions: {{ .Values.config.max_versions | quote }}
+  name: {{ .Values.config.name | quote }}
+  password-length: {{ .Values.config.password_length | quote }}
+  resource-group-name: {{ .Values.config.resource_group_name | quote }}
+  resource-name: {{ .Values.config.resource_name | quote }}
+  rotate-after-disconnect: {{ .Values.config.rotate_after_disconnect | quote }}
+  rotation-event-in: {{ .Values.config.rotation_event_in | quote }}
+  rotation-hour: {{ .Values.config.rotation_hour | quote }}
+  rotation-interval: {{ .Values.config.rotation_interval | quote }}
+  rotator-type: {{ .Values.config.rotator_type | quote }}
+  storage-account-key-name: {{ .Values.config.storage_account_key_name | quote }}
+  tags: {{ .Values.config.tags | quote }}
+  target-name: {{ .Values.config.target_name | quote }}
+{{- end }}

@@ -1,0 +1,24 @@
+name: auto-release
+
+# Publish every hand-bumped chart to OCI on merge. The whole footprint is this
+# shim around substrate's monorepo reusable, which runs `nix run .#release`
+# (forge helm release-all — discover→lint→package→push, 404-idempotent so an
+# already-published (name, version) pair is skipped).
+#
+# Bump a chart's Chart.yaml version in its own commit; merging is what ships it.
+#
+# The `release` app this invokes did not exist until now — the flake had
+# packages but no apps, so a shim added earlier would have failed at its first
+# step. flake.nix derives all 120 chartDefs from `readDir ./charts` rather than
+# hand-listing them, so a chart the generator adds is published without anyone
+# remembering to register it. Verified: 243 apps (120 lint + 120 release + the
+# lint/release/mirror/template/bump aggregates).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  release:
+    uses: pleme-io/substrate/.github/workflows/helm-monorepo-auto-release.yml@main
+    secrets: inherit
